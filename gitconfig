@@ -1,0 +1,29 @@
+[alias]
+  co = checkout
+  st = status
+  br = branch
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  cbr = rev-parse --abbrev-ref HEAD
+  kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
+[user]
+  name = Brian Deane
+  email = bdeanemachine@gmail.com
+[color]
+  diff = true
+  log = true
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[core]
+  editor = vim

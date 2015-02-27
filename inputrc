@@ -1,0 +1,14 @@
+# thanks to http://linuxg.net/2-bash-inputrc-tricks-tab-tab-and-case-insensitive-completion/
+set completion-ignore-case on
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# ctrl+arrows
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+
+# alt+arrows
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
+
