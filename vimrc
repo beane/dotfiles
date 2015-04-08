@@ -16,15 +16,28 @@ set wrapscan
 
 runtime macros/matchit.vim
 
-nnoremap j gj
-nnoremap k gk
+noremap j gj
+noremap k gk
+
+noremap gj j
+noremap gk k
 
 "easier escape sequences
-inoremap ;; <Esc>
-vnoremap ;; <Esc>
-nnoremap ; :
 nnoremap ! :!
 
 "quick save
 nnoremap s :w<Enter>
 
+" simple_comment.vim v0.1
+" toggles line comments
+" boisvertmaxime@gmail.com
+fun! Co(ft)
+    let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//'}
+    if has_key(dic, a:ft)
+        let c = dic[a:ft]
+        exe "s@^@".c." @ | s@^".c." ".c." @@e"
+    endif
+endfun
+
+nnoremap <silent> # :call Co(&ft)<CR>
+vnoremap <silent> # :call Co(&ft)<CR>
