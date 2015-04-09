@@ -8,7 +8,10 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-set nonumber
+" keep cursor in the middle of the screen
+set scrolloff=999
+set relativenumber
+
 set ruler
 
 set hlsearch
@@ -22,10 +25,12 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-"easier escape sequences
+" easier escape sequences
+inoremap ;; <Esc>
+vnoremap ;; <Esc>
 nnoremap ! :!
 
-"quick save
+" quick save
 nnoremap s :w<Enter>
 
 " simple_comment.vim v0.1
