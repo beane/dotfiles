@@ -36,7 +36,7 @@ nnoremap s :w<Enter>
 " simple_comment.vim v0.1
 " toggles line comments
 " boisvertmaxime@gmail.com
-fun! Co(ft)
+fun! Comment(ft)
     let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//'}
     if has_key(dic, a:ft)
         let c = dic[a:ft]
@@ -44,5 +44,15 @@ fun! Co(ft)
     endif
 endfun
 
-nnoremap <silent> # :call Co(&ft)<CR>
-vnoremap <silent> # :call Co(&ft)<CR>
+nnoremap <silent> # :call Comment(&ft)<CR>
+vnoremap <silent> # :call Comment(&ft)<CR>
+
+fun! KillWhitespace()
+  let lineNum = line(".")
+  let colNum = col(".")
+  %s/[ \t]*$//g
+  call cursor(lineNum, colNum)
+endfun
+
+autocmd BufWritePre * call KillWhitespace()
+
