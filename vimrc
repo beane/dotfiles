@@ -9,8 +9,8 @@ set softtabstop=2
 set expandtab
 
 " keep cursor in the middle of the screen
-set scrolloff=999
-set relativenumber
+" set scrolloff=999
+" set relativenumber
 
 set ruler
 
@@ -37,20 +37,28 @@ nnoremap s :w<Enter>
 " toggles line comments
 " boisvertmaxime@gmail.com
 fun! Comment(ft)
-    let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//'}
-    if has_key(dic, a:ft)
-        let c = dic[a:ft]
-        exe "s@^@".c." @ | s@^".c." ".c." @@e"
-    endif
+" get cursor position
+  let lineNum = line(".")
+  let colNum = col(".")
+
+  let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//'}
+  if has_key(dic, a:ft)
+    let c = dic[a:ft]
+    exe "s@^@".c." @ | s@^".c." ".c." @@e"
+  endif
+
+" reset cursor
+  call cursor(lineNum, colNum)
 endfun
 
 nnoremap <silent> # :call Comment(&ft)<CR>
 vnoremap <silent> # :call Comment(&ft)<CR>
 
+" kill spaces/tabs at the end of every line
 fun! KillWhitespace()
   let lineNum = line(".")
   let colNum = col(".")
-  %s/[ \t]*$//g
+  %s/\s*$//g
   call cursor(lineNum, colNum)
 endfun
 
