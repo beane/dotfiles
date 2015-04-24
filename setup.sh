@@ -7,38 +7,38 @@
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
+dotfiles=~/dotfiles                    # dotfiles directory
+olddotfiles=~/dotfiles_old             # old dotfiles backup directory
 files="bashrc vimrc gitconfig bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb" # list of files to copy
 
 ##########
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
+echo "Creating $olddotfiles for backup of any existing dotfiles in ~"
+mkdir -p $olddotfiles
 echo "...done"
 echo ""
 
 # change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
+echo "Changing to the $dotfiles directory"
+cd $dotfiles
 echo "...done"
 echo ""
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then move new dotfiles in
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir."
+    echo "Moving any existing dotfiles from ~ to $olddotfiles."
     dir=$(dirname $file)
     base=$($basename $file)
-    mv ~/$dir/.$base $olddir/ || echo "~/.$file does not exist."
+    mv ~/.$base $olddotfiles/ || echo "~/.$base does not exist."
     echo "Copying .$file to home directory."
     echo ""
-    cp -r $dir/$file ~/.$file # might need a different flag to copy directories
+    cp -r $dir/$base ~/.$base # might need a different flag to copy directories
 done
 
 # move vagrant stuff over
 echo "Moving vagrant files to ~"
-cp -R $dir/vagrant ~
+cp -R $dotfiles/vagrant ~
 echo "...done"
 echo ""
 
@@ -46,5 +46,4 @@ echo "Sourcing .bash_profile"
 source ~/.bashrc
 echo "...done"
 echo ""
-
 
