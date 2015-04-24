@@ -29,7 +29,7 @@ echo ""
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddotfiles."
     dir=$(dirname $file)
-    base=$($basename $file)
+    base=$(basename $file)
     mv ~/.$base $olddotfiles/ || echo "~/.$base does not exist."
     echo "Copying .$file to home directory."
     echo ""
