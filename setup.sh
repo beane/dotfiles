@@ -28,7 +28,9 @@ echo ""
 # move any existing dotfiles in homedir to dotfiles_old directory, then move new dotfiles in
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir."
-    mv ~/.$file $olddir/ || echo "~/.$file does not exist."
+    dir=$(dirname $file)
+    base=$($basename $file)
+    mv ~/$dir/.$base $olddir/ || echo "~/.$file does not exist."
     echo "Copying .$file to home directory."
     echo ""
     cp -r $dir/$file ~/.$file # might need a different flag to copy directories
