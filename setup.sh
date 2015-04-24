@@ -31,7 +31,7 @@ for file in $files; do
     dir=$(dirname $file)
     base=$(basename $file)
     mv ~/.$base $olddotfiles/ || echo "~/.$base does not exist."
-    echo "Copying .$file to home directory."
+    echo "Copying $dir/.$base to home directory."
     echo ""
     cp -r $dir/$base ~/.$base # might need a different flag to copy directories
 done
