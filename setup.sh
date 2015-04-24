@@ -5,13 +5,18 @@
 # thanks to http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 ############################
 
+########## git prep
+
+git submodule init
+git submodule update
+
 ########## Variables
 
 dotfiles=~/dotfiles                    # dotfiles directory
 olddotfiles=~/dotfiles_old             # old dotfiles backup directory
 files="bashrc vimrc gitconfig bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb" # list of files to copy
 
-##########
+########## Showtime
 
 # create dotfiles_old in homedir
 echo "Creating $olddotfiles for backup of any existing dotfiles in ~"
