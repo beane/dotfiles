@@ -98,4 +98,7 @@ function swapFiles() {
   fi
 }
 
+function pp() {
+  json="$(cat "$@")" ruby $HOME/.json_pretty_printer.rb
+}
 

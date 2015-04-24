@@ -1,0 +1,3 @@
+[submodule "json-pretty-print"]
+	path = json-pretty-print
+	url = https://github.com/beane/json-pretty-print

@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc gitconfig bash_aliases git-completion.bash inputrc" # list of files to copy
+files="bashrc vimrc gitconfig bash_aliases git-completion.bash inputrc json_pretty_print/json_pretty_printer.rb" # list of files to copy
 
 ##########
 
@@ -25,7 +25,7 @@ cd $dir
 echo "...done"
 echo ""
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then move new dotfiles in 
+# move any existing dotfiles in homedir to dotfiles_old directory, then move new dotfiles in
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir."
     mv ~/.$file $olddir/ || echo "~/.$file does not exist."
