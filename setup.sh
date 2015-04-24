@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc gitconfig bash_aliases git-completion.bash inputrc json_pretty_print/json_pretty_printer.rb" # list of files to copy
+files="bashrc vimrc gitconfig bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb" # list of files to copy
 
 ##########
 
