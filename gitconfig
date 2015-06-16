@@ -29,4 +29,3 @@
   untracked = cyan
 [core]
   editor = vim
-  excludesfile = /Users/briandeane/.gitignore_global
