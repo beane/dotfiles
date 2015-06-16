@@ -6,7 +6,8 @@ Essentials:
   - Chrome - log in for the chrome extensions
   - Lastpass
   - Divvy
-  - Cloup App
+  - ~~Cloup App~~
+    - Cloud App started charging :-(
   - Dropbox
   - ~~[Solarized][solarized-link]. I am now in love with solarized.~~
     - ~~For [sublime][sublime-solarized]~~
@@ -16,10 +17,12 @@ Essentials:
   - Homebrew (includes xcode)
   - VirtualBox
   - Vagrant (startup Vagrantfile included here)
-  - Sublime Text
-    - [Setup][sublime-link]
+  - ~~Sublime Text~~
+    - ~~[Setup][sublime-link]~~
+    - Edit: vim for life!
   - vim
   - ~~vim colorize (included in the dotfiles)~~
+  - tmux
 
 On Chrome:
   - Lastpass
