@@ -63,3 +63,11 @@ vnoremap <silent> # :call Comment(&ft)<CR>
 " endfun
 
 " autocmd BufWritePre * call KillWhitespace()
+
+function LargeFile()
+  let choice = confirm("The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB - Do you want to open it?", "&yes\n&no", 2)
+  if choice == 0 || choice == 2
+    :q
+  endif
+endfunction
+
