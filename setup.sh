@@ -14,7 +14,7 @@ git submodule update
 
 dotfiles=~/dotfiles                    # dotfiles directory
 olddotfiles=~/dotfiles_old             # old dotfiles backup directory
-files="bash_profile vimrc gitconfig bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb" # list of files to copy
+files="bash_profile vimrc gitconfig bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb tmux.conf" # list of files to copy
 
 ########## Showtime
 
