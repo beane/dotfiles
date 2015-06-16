@@ -10,3 +10,8 @@ export HISTCONTROL=ignorespace
 
 export EDITOR="vim"
 
+# start tmux or attach to an existing session
+if which tmux >/dev/null 2>&1; then
+  [[ -z "$TMUX" ]] && (tmux attach || tmux new-session -n main)
+fi
+
