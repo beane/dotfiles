@@ -31,7 +31,7 @@ vnoremap ;; <Esc>
 nnoremap ! :!
 
 " quick save
-nnoremap s :w<Enter>
+nnoremap s :update<Enter>
 
 " simple_comment.vim v0.1
 " toggles line comments
