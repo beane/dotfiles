@@ -55,12 +55,11 @@ nnoremap <silent> # :call Comment(&ft)<CR>
 vnoremap <silent> # :call Comment(&ft)<CR>
 
 " kill spaces/tabs at the end of every line
-fun! KillWhitespace()
-  let lineNum = line(".")
-  let colNum = col(".")
-  %s/\s*$//g
-  call cursor(lineNum, colNum)
-endfun
+" fun! KillWhitespace()
+"   let lineNum = line(".")
+"   let colNum = col(".")
+"   %s/\s*$//g
+"   call cursor(lineNum, colNum)
+" endfun
 
-autocmd BufWritePre * call KillWhitespace()
-
+" autocmd BufWritePre * call KillWhitespace()
