@@ -1,6 +1,5 @@
 #!/bin/sh
 alias be="bundle exec"
-alias irb="pry"
 alias ls="ls -FG --color=auto" # shows directories in a different color
 alias grep='grep -n --color=auto'
 alias tailf='tail -f'
@@ -42,11 +41,6 @@ function search() {
   fi
 
   grep -Irn "$1" "$search_dir" $3
-}
-
-# searches through the process list
-function psearch() {
-  ps -ef | grep "$1" | grep -v grep
 }
 
 # escapes space characters in ls command for copy and paste
