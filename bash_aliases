@@ -68,7 +68,7 @@ function sanitize_all() {
 }
 
 # opens a file in vim with name $1.timestamp
-function vin() {
+function vits() {
   vim $1.$(date -u +%Y%m%d%H%M%S)
 }
 
