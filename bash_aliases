@@ -50,6 +50,23 @@ function els() {
   /bin/ls $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:\\\&:g"
 }
 
+# only use with a single file at a time
+function sanitize() {
+  SAFE_NAME=$(echo $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:_:g")
+  echo "copying $1 to $SAFE_NAME"
+  cp "$@" $SAFE_NAME
+}
+
+# need to teach other subshells to inherit this
+# function so that find can use it as well
+export -f sanitize
+
+# copies files in the current directory with
+# dangerous characters to files with safer names
+function sanitize_all() {
+  find * -type f -d 0 -exec bash -c 'sanitize "{}"' \;
+}
+
 # opens a file in vim with name $1.timestamp
 function vin() {
   vim $1.$(date -u +%Y%m%d%H%M%S)
