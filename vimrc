@@ -64,10 +64,26 @@ vnoremap <silent> # :call Comment(&ft)<CR>
 
 " autocmd BufWritePre * call KillWhitespace()
 
-function LargeFile()
-  let choice = confirm("The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB - Do you want to open it?", "&yes\n&no", 2)
+" fun! ICanHazTabs()
+"   vimgrep '\t' %:p
+" endfun
+
+" file is larger than 10mb
+let g:LargeFile = 1024 * 1024 * 10
+augroup LargeFile
+ autocmd BufReadPre * call HandleLargeFiles()
+augroup END
+
+function HandleLargeFiles()
+ let f=getfsize(expand("<afile>"))
+ if f > g:LargeFile || f == -2
+   call PromptOpenLargeFile()
+ endif
+endfunction
+
+function PromptOpenLargeFile()
+  let choice = confirm("The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB - Do you want to open it?", "&Yes\n&No", 2)
   if choice == 0 || choice == 2
     :q
   endif
 endfunction
-
