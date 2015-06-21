@@ -11,7 +11,9 @@ export HISTCONTROL=ignorespace
 export EDITOR="vim"
 
 # start tmux or attach to an existing session
-if which tmux >/dev/null 2>&1; then
-  [[ -z "$TMUX" ]] && (tmux attach || tmux new-session -n main)
+# only runs if tmux exists and we're not in
+# an active tmux session right now
+if which tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]]; then
+  tmux attach || tmux new-session -n main
 fi
 
