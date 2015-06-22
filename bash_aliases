@@ -97,7 +97,6 @@ function pp() {
 }
 
 # only use with a single file at a time
-# uses find under the hood
 function _sanitize() {
   help_text() {
     echo "
