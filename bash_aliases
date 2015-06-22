@@ -50,23 +50,6 @@ function els() {
   /bin/ls $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:\\\&:g"
 }
 
-# only use with a single file at a time
-function sanitize() {
-  SAFE_NAME=$(echo $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:_:g")
-  echo "copying $1 to $SAFE_NAME"
-  cp "$@" $SAFE_NAME
-}
-
-# need to teach other subshells to inherit this
-# function so that find can use it as well
-export -f sanitize
-
-# copies files in the current directory with
-# dangerous characters to files with safer names
-function sanitize_all() {
-  find * -type f -d 0 -exec bash -c 'sanitize "{}"' \;
-}
-
 # opens a file in vim with name $1.timestamp
 function vits() {
   vim $1.$(date -u +%Y%m%d%H%M%S)
@@ -112,3 +95,89 @@ function swapFiles() {
 function pp() {
   cat "$@" | $HOME/.json_pretty_printer.rb
 }
+
+# only use with a single file at a time
+# uses find under the hood
+function _sanitize() {
+  help_text() {
+    echo "
+      Use the sanitize function to change dangerous filenames
+      to use safe characters.
+
+      Default behavior is to copy the dangerous files over
+      and replace dangerous characters in the copy with '_'.
+
+      Pass the -d flag to destroy the dirty files.
+
+      The -h flag will show this help text.
+
+      As always, -v provides verbose output.
+    "
+  }
+
+  # need to set locally when
+  # using getopts in a function
+  local OPTIND option
+
+  local FUNCTION=cp
+  local MODIFYING="copying"
+  local VERBOSE=1 # defaults to false
+
+  while getopts "dhv" option; do
+    case $option in
+      d)
+        FUNCTION=mv
+        MODIFYING="moving"
+        ;;
+      v)
+        VERBOSE=0
+        ;;
+      *) # also catches the -h option
+        help_text
+        return 1
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
+  if [[ -z $@ ]]
+  then
+    echo "no file provided"
+    return 2
+  fi
+
+  # try to ignore when the file name is unchanged
+  SAFE_NAME=$(echo $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:_:g")
+  if [[ $SAFE_NAME = "$@" ]]
+  then
+    [[ $VERBOSE -ne 1 ]] && echo "$@ does not need to be sanitized"
+    return 3
+  fi
+
+  [[ $VERBOSE -ne 1 ]] && echo "$MODIFYING $@ to $SAFE_NAME"
+
+  # finally execute the command
+  $FUNCTION "$@" "$SAFE_NAME"
+}
+
+# need to teach other subshells to inherit this
+# function so that find can use it in `find`
+export -f _sanitize
+
+# renames files in the current directory
+# with dangerous characters to safer names
+function sanitize() {
+  local OPTIND option
+
+  while getopts ":h" option; do
+    case $option in
+      h)
+        _sanitize -h
+        return 1
+        ;;
+    esac
+  done
+
+  find * -type f -d 0 -exec bash -c "_sanitize $@ '{}'" \;
+}
+
