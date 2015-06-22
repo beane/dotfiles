@@ -150,11 +150,11 @@ function _sanitize() {
   SAFE_NAME=$(echo $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:_:g")
   if [[ $SAFE_NAME = "$@" ]]
   then
-    [[ $VERBOSE -ne 1 ]] && echo "$@ does not need to be sanitized"
+    [[ $VERBOSE -ne 1 ]] && echo "\"$@\" does not need to be sanitized"
     return 3
   fi
 
-  [[ $VERBOSE -ne 1 ]] && echo "$MODIFYING $@ to $SAFE_NAME"
+  [[ $VERBOSE -ne 1 ]] && echo "$MODIFYING \"$@\" to \"$SAFE_NAME\""
 
   # finally execute the command
   $FUNCTION "$@" "$SAFE_NAME"
