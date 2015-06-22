@@ -178,6 +178,6 @@ function sanitize() {
     esac
   done
 
-  find * -type f -d 0 -exec bash -c "_sanitize $@ '{}'" \;
+  find * -maxdepth 0 -type f -exec bash -c "_sanitize $@ '{}'" \;
 }
 
