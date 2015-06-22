@@ -161,7 +161,7 @@ function _sanitize() {
 }
 
 # need to teach other subshells to inherit this
-# function so that find can use it in `find`
+# function so that `find` knows how to use it
 export -f _sanitize
 
 # renames files in the current directory
@@ -171,7 +171,7 @@ function sanitize() {
 
   while getopts ":h" option; do
     case $option in
-      h)
+      h) # just shows the help menu
         _sanitize -h
         return 1
         ;;
