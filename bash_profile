@@ -13,7 +13,7 @@ export EDITOR="vim"
 # start tmux or attach to an existing session
 # only runs if tmux exists and we're not in
 # an active tmux session right now
-if which tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]]; then
-  tmux attach || tmux new-session -n main
-fi
+# if which tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]]; then
+#  tmux attach || tmux new-session -n main
+# fi
 

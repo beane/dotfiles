@@ -1,0 +1,16 @@
+# use C-j instead of C-a
+escape ^jj
+
+# paste with ^j-p
+bind p paste .
+
+# gets the vim output out of the buffer
+altscreen on
+
+# don't show the copyright page
+startup_message off
+
+# original: "%{= g} %{= w}%-Lw%{=r}%n%f* %t%{-}%+LW"
+# be careful - this fails to truncate windows properly
+# when there are too may to fit on the screen
+hardstatus alwayslastline "%{= wk} %H %{= kg} %-Lw%{=r}%n%f* %t%{-}%+LW %=%{bk}%c:%s %{wk} %D %Y %M %d "
