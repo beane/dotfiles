@@ -44,7 +44,7 @@ echo ""
 
 # sym link vagrant stuff over
 echo "Creating a symbolic link for vagrant files to $DOTFILES"
-mv ~/vagrant ~/dotfiles
+mv ~/vagrant $OLDDOTFILES
 ln -v -s $DOTFILES/vagrant ~
 echo "...done"
 echo ""
