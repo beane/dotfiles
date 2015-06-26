@@ -1,11 +1,12 @@
 [alias]
   co = checkout
+  cm = commit -m
   st = status
   br = branch
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   cbr = rev-parse --abbrev-ref HEAD
   kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
-  po = !sh -c 'git push origin `git cbr`'
+  pushc = !sh -c 'git push origin `git cbr`'
   diffc = diff --cached
 [user]
   name = Brian Deane
