@@ -34,13 +34,12 @@ echo "Begin creating symbolic links to dotfiles..."
 for FILE in $FILES; do
     printf "\t"
     echo "Moving any existing dotfiles from ~ to $OLDDOTFILES."
-    DIR=$(dirname $FILE)
     BASE=$(basename $FILE)
     mv ~/.$BASE $OLDDOTFILES/ || echo "~/.$BASE does not exist."
     printf "\t"
-    echo "Creating a symbolic link from $DIR/.$BASE to home directory."
+    echo "Creating a symbolic link from $DOTFILES/.$BASE to home directory."
     echo ""
-    ln -v -s $DIR/$BASE ~/.$BASE
+    ln -v -s $DOTFILES/$BASE ~/.$BASE
 done
 echo "...done"
 
