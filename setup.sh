@@ -29,20 +29,22 @@ cd $DOTFILES
 echo "...done"
 echo ""
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then move new dotfiles in
+echo "Begin creating symbolic links to dotfiles..."
+# move any existing dotfiles in homedir to dotfiles_old directory, then sym link new dotfiles in
 for FILE in $FILES; do
-    echo "Moving any existing dotfiles from ~ to $OLDDOTFILES."
+    echo "\tMoving any existing dotfiles from ~ to $OLDDOTFILES."
     DIR=$(dirname $FILE)
     BASE=$(basename $FILE)
     mv ~/.$BASE $OLDDOTFILES/ || echo "~/.$BASE does not exist."
-    echo "Copying $DIR/.$BASE to home directory."
+    echo "\tCreating a symbolic link from $DIR/.$BASE to home directory."
     echo ""
-    cp -r $DIR/$BASE ~/.$BASE # might need a different flag to copy directories
+    ln -v -s $DIR/$BASE ~/.$BASE
 done
+echo "...done"
 
-# move vagrant stuff over
-echo "Moving vagrant files to ~"
-cp -R $DOTFILES/vagrant ~
+# sym link vagrant stuff over
+echo "Creating a symbolic link for vagrant files to ~"
+ln -v -s $DOTFILES/vagrant ~
 echo "...done"
 echo ""
 
