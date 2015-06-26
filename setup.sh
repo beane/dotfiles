@@ -34,12 +34,13 @@ echo "Begin backing up old files and creating symbolic links to new dotfiles..."
 for FILE in $FILES; do
     BASE=$(basename $FILE)
     mv ~/.$BASE $OLDDOTFILES/ || echo "~/.$BASE does not exist."
-    printf "\t"
     echo "Creating a symbolic link from $DOTFILES/$FILE to home directory."
-    echo ""
+    printf "\t"
     ln -v -s $DOTFILES/$FILE ~/.$BASE
+    echo ""
 done
 echo "...done"
+echo ""
 
 # sym link vagrant stuff over
 echo "Creating a symbolic link for vagrant files to $DOTFILES"
