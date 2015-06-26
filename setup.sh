@@ -32,11 +32,13 @@ echo ""
 echo "Begin creating symbolic links to dotfiles..."
 # move any existing dotfiles in homedir to dotfiles_old directory, then sym link new dotfiles in
 for FILE in $FILES; do
-    echo "\tMoving any existing dotfiles from ~ to $OLDDOTFILES."
+    printf "\t"
+    echo "Moving any existing dotfiles from ~ to $OLDDOTFILES."
     DIR=$(dirname $FILE)
     BASE=$(basename $FILE)
     mv ~/.$BASE $OLDDOTFILES/ || echo "~/.$BASE does not exist."
-    echo "\tCreating a symbolic link from $DIR/.$BASE to home directory."
+    printf "\t"
+    echo "Creating a symbolic link from $DIR/.$BASE to home directory."
     echo ""
     ln -v -s $DIR/$BASE ~/.$BASE
 done
