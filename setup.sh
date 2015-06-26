@@ -4,6 +4,10 @@
 # thanks to http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 ############################
 
+########## helper functions
+
+function print_tab() { printf "\t"; }
+
 ########## git prep
 
 git submodule init
@@ -14,6 +18,7 @@ git submodule update
 DOTFILES=~/dotfiles                    # dotfiles directory
 OLDDOTFILES=~/dotfiles_old             # old dotfiles backup directory
 FILES="bash_profile vimrc gitconfig bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb tmux.conf screenrc" # list of files to copy
+DIRECTORIES="vagrant"
 
 ########## Showtime
 
@@ -31,26 +36,37 @@ echo ""
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then sym link new dotfiles in
 echo "Begin backing up old files and creating symbolic links to new dotfiles..."
+echo ""
 for FILE in $FILES; do
     BASE=$(basename $FILE)
-    mv ~/.$BASE $OLDDOTFILES/ || echo "~/.$BASE does not exist."
-    echo "Creating a symbolic link from $DOTFILES/$FILE to home directory."
-    printf "\t"
-    ln -v -s $DOTFILES/$FILE ~/.$BASE
+    print_tab && echo "Backing up ~/.$BASE"
+    print_tab && mv ~/.$BASE $OLDDOTFILES/ || print_tab && echo "~/.$BASE does not exist."
+    print_tab && echo "Creating a symbolic link from $DOTFILES/$FILE to home directory."
+    print_tab && ln -v -s $DOTFILES/$FILE ~/.$BASE
     echo ""
 done
 echo "...done"
 echo ""
 
-# sym link vagrant stuff over
-echo "Creating a symbolic link for vagrant files to $DOTFILES"
-mv ~/vagrant $OLDDOTFILES
-ln -v -s $DOTFILES/vagrant ~
+# move any existing dotfiles in homedir to dotfiles_old directory, then sym link new dotfiles in
+echo "Begin backing up old directories and creating symbolic links to new dotfiles..."
+echo ""
+for DIR in $DIRECTORIES; do
+    print_tab && echo "Backing up ~/.$BASE"
+    print_tab && mv ~/$DIR $OLDDOTFILES/ || print_tab && echo "~/$DIR does not exist."
+    print_tab && echo "Creating a symbolic link from $DOTFILES/$DIR to home directory."
+    print_tab && ln -v -s $DOTFILES/$DIR ~/$DIR
+    echo ""
+done
 echo "...done"
 echo ""
 
 echo "Sourcing .bash_profile"
 source ~/.bash_profile
 echo "...done"
-echo ""
 
+echo "
+Dotfiles are all installed!
+You may to log out and log back in for them to take effect.
+(Or  source ~/.bash_profile.) Enjoy!
+"
