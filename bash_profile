@@ -1,9 +1,11 @@
 # only sources these if they exist
+# DO NOT SOURCE ~/.bashrc -> my bashrc will source this file,
+# and so on, ad infinitum
 [[ -r ~/.git-completion.bash ]] && . ~/.git-completion.bash
 [[ -r ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -r ~/.bash_profile.local ]] && . ~/.bash_profile.local
 
-# export PS1="beanemachine:\W > "
+export PS1="beanemachine:\W > "
 
 export HISTTIMEFORMAT="%F %T "
 export HISTSIZE=10000
