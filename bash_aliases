@@ -180,3 +180,7 @@ function sanitize() {
   find * -maxdepth 0 -type f -exec bash -c "_sanitize $@ '{}'" \;
 }
 
+# shows everything except the last `n` lines
+function skip_last() {
+  tail -r | tail -n +$(( $1 + 1 )) | tail -r
+}
