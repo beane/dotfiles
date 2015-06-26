@@ -40,7 +40,7 @@ function search() {
     echo "using extra args \"$3\""
   fi
 
-  grep -Irn "$1" "$search_dir" $3
+  grep -IHrn "$1" "$search_dir" $3
 }
 
 # escapes space characters in ls command for copy and paste
