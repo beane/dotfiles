@@ -10,6 +10,7 @@ export HISTSIZE=10000
 export HISTCONTROL=ignorespace
 
 export EDITOR="vim"
+export VISUAL="vim"
 
 # start tmux or attach to an existing session
 # only runs if tmux exists and we're not in
