@@ -1,6 +1,7 @@
 filetype plugin indent on
 
 set nocompatible
+set paste
 
 syntax on
 set tabstop=2
