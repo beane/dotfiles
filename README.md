@@ -5,16 +5,16 @@ Here's a few lists of stuff I like to have on my machines.
 Essentials:
   - Chrome - log in for the chrome extensions
   - Lastpass
-  - Divvy
+  - [Divvy][divy-link]
   - ~~Cloup App~~
     - Cloud App started charging :-(
   - Dropbox
   - ~~[Solarized][solarized-link]. I am now in love with solarized.~~
-    - ~~For [sublime][sublime-solarized]~~
+    - ~~For [sublime][sublime-solarized-link]~~
     - Edit: I am no longer in love with Solarized. It messed up sublime and the terminal.
   - these dotfiles
-  - rvm
-  - Homebrew (includes xcode)
+  - [RVM][rvm-link]
+  - [Homebrew (includes xcode)][homebrew-link]
   - VirtualBox
   - Vagrant (startup Vagrantfile included here)
   - ~~Sublime Text~~
@@ -40,4 +40,7 @@ Extra:
 
 [solarized-link]: https://github.com/altercation/solarized
 [sublime-link]: https://gist.github.com/olivierlacan/1195304
-[sublime-solarized]: https://github.com/paulcpederson/solarized-sublime
+[sublime-solarized-link]: https://github.com/paulcpederson/solarized-sublime
+[divvy-link]: http://mizage.com/divvy/
+[rvm-link]: https://rvm.io/
+[homebrew-link]: http://brew.sh/
