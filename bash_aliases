@@ -55,13 +55,6 @@ function search() {
   grep -IHrn "$1" "$search_dir" $3
 }
 
-# escapes space characters in ls command for copy and paste
-# I might add logic for keeping color output, but that's bad for file IO
-# something like `env CLICOLOR_FORCE=1 /bin/ls $@ | sed -e 's/\ /\\ /g'`
-function els() {
-  /bin/ls $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:\\\&:g"
-}
-
 # opens a file in vim with name $1.timestamp
 function vits() {
   vim $1.$(date -u +%Y%m%d%H%M%S)
@@ -106,6 +99,13 @@ function swapFiles() {
 
 function pp() {
   cat "$@" | $HOME/.json_pretty_printer.rb
+}
+
+# escapes space characters in ls command for copy and paste
+# I might add logic for keeping color output, but that's bad for file IO
+# something like `env CLICOLOR_FORCE=1 /bin/ls $@ | sed -e 's/\ /\\ /g'`
+function els() {
+  /bin/ls $@ | sed -e "s:[ ()[\\!@$=^&*\`;:?\"'|,<>]:\\\&:g"
 }
 
 # only use with a single file at a time
