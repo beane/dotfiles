@@ -5,7 +5,7 @@ Here's a few lists of stuff I like to have on my machines.
 Essentials:
   - Chrome - log in for the chrome extensions
   - Lastpass
-  - [Divvy][divy-link]
+  - [Divvy][divvy-link]
   - ~~Cloup App~~
     - Cloud App started charging :-(
   - Dropbox
