@@ -21,7 +21,9 @@ export VISUAL="vim"
 # open screen at start - use instead of tmux if you want
 # if [[ $( screen -ls | grep "No Sockets") ]]
 # then
-#   screen -S main
+#   screen -dm -S main
+#   screen -S main -p 1 -X stuff "clear; screen -ls$(printf \\r)"
+#   screen -rd
 # fi
 # screen -ls
 
