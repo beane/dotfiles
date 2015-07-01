@@ -30,4 +30,4 @@
   untracked = cyan
 [core]
   editor = vim
-  excludesfile = '~/.gitignore'
+  excludesfile = '~/.gitignore_global'
