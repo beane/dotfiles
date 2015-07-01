@@ -13,10 +13,11 @@ export VISUAL="vim"
 # start tmux or attach to an existing session
 # only runs if tmux exists and we're not in
 # an active tmux session right now
-# if which tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]]; then
-#  tmux attach || tmux new-session -s main
+# if which tmux >/dev/null 2>&1 && [[ -z "$TMUX" ]]
+# then
+#   tmux attach || tmux new-session -s main
+#   tmux list-windows -a
 # fi
-# tmux list-windows -a
 
 # open screen at start - use instead of tmux if you want
 # if [[ $( screen -ls | grep "No Sockets") ]]
