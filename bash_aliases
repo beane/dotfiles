@@ -6,7 +6,7 @@
 
 alias be="bundle exec"
 alias ls="ls -FG --color=auto" # shows directories in a different color
-alias grep='grep -n --color=auto'
+alias grep='grep --color=auto'
 alias tailf='tail -f'
 alias du='du -c'
 alias info='info --vi-keys'
