@@ -196,3 +196,13 @@ function sanitize() {
 function skip_last() {
   tail -r | tail -n +$(( $1 + 1 )) | tail -r
 }
+
+function make_date_path() {
+  if [[ -z $1 ]]
+  then
+    DIR=$(pwd)
+  else
+    DIR=$1
+  fi
+  mkdir -p "$DIR/$(date +"%Y")/$(date +"%m")/$(date +"%d")/"
+}
