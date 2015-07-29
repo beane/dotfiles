@@ -1,6 +1,3 @@
-# use C-j instead of C-a
-escape ^jj
-
 # paste with ^j-p
 bind p paste .
 
