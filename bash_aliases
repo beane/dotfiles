@@ -184,7 +184,7 @@ function sanitize() {
     case $option in
       h) # just shows the help menu
         _sanitize -h
-        return 1
+        return 0
         ;;
     esac
   done
