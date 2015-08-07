@@ -197,6 +197,11 @@ function skip_last() {
   tail -r | tail -n +$(( $1 + 1 )) | tail -r
 }
 
+# shows everything except the first `n` lines
+function drop_first() {
+  tail -r | skip_last $1 | tail -r
+}
+
 function make_date_path() {
   if [[ -z $1 ]]
   then
