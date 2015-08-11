@@ -56,7 +56,11 @@ function search() {
 }
 
 function find_and_replace() {
-  DIR=$(pwd)
+  if [[ -z $DIR ]];
+  then
+    DIR=$(pwd)
+  fi
+
   echo "looking for \"$1\" in $DIR"
   for file in $(grep -Irl "$1" $DIR)
   do
