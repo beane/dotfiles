@@ -2,6 +2,11 @@ filetype plugin indent on
 
 set nocompatible
 set paste
+set foldmethod=indent
+
+"  use these to persist folds
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 syntax on
 set tabstop=2
