@@ -33,7 +33,6 @@ noremap gj j
 noremap gk k
 
 " easier escape sequences
-inoremap ;; <Esc>
 vnoremap ;; <Esc>
 nnoremap ! :!
 
