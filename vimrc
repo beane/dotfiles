@@ -25,6 +25,7 @@ set wrapscan
 
 runtime macros/matchit.vim
 
+" lets you use j/k to naturally navigate wrapped lines
 noremap j gj
 noremap k gk
 
