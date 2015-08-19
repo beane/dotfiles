@@ -29,7 +29,7 @@ fi
 # open screen at start - use instead of tmux if you want
 if $START_SCREEN && [[ -z $TMUX ]]
 then
-  if [[ $SCREEN_STATUS -eq 8 ]] # no screens are running
+  if [[ $SCREEN_STATUS -le 9 ]] # no screens are running
   then
     screen -d -m -S main
     screen -S main -p 1 -X stuff "clear$(printf \\r)"
