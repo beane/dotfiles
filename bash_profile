@@ -20,7 +20,7 @@ export VISUAL="vim"
 # an active tmux/screen session right now
 SCREEN_STATUS=$(screen -q -ls; echo $?) # eq 8 when no screen is running
 START_SCREEN=$(which true)
-if which tmux >/dev/null 2>&1 && [[ -z $TMUX ]] && [[ $SCREEN_STATUS -eq 8 ]] 
+if which tmux >/dev/null 2>&1 && [[ -z $TMUX ]] && [[ $SCREEN_STATUS -le 9 ]] 
 then
   START_SCREEN=$(which false)
   tmux attach >/dev/null 2>&1 || tmux new-session -s main
