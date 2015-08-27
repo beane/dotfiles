@@ -60,11 +60,13 @@ function find_and_replace() {
   then
     DIR=$(pwd)
   fi
+  [[ -z "$2" ]] && echo "no replacement string given: searching instead"
 
   echo "looking for \"$1\" in $DIR"
-  for file in $(grep -Irl "$1" $DIR)
+  for file in $(grep -Irl "$1" "$DIR")
   do
-    sed -i "" -e "s:$1:$2:g" $file
+    printf "\tfound match in $file\n"
+    [[ -n "$2" ]] && sed -i "" -e "s:$1:$2:g" "$file"
   done
 }
 
