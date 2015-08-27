@@ -15,25 +15,19 @@ export VISUAL="vim"
 # one of the sessions interrupts normal
 # sourcing of bash_profile
 
-# start tmux or attach to an existing session
-# only runs if tmux exists and we're not in
-# an active tmux/screen session right now
+# start tmux/screen or attach to an existing session
+# only runs if we're not in an active tmux/screen session right now
+
 SCREEN_STATUS=$(screen -q -ls; echo $?) # eq 8 when no screen is running
-START_SCREEN=$(which true)
 if which tmux >/dev/null 2>&1 && [[ -z $TMUX ]] && [[ $SCREEN_STATUS -le 9 ]]
 then
-  START_SCREEN=$(which false)
+  unset SCREEN_STATUS
   tmux attach >/dev/null 2>&1 || tmux new-session -s main
-fi
-
-# open screen at start - use instead of tmux if you want
-if $START_SCREEN && [[ -z $TMUX ]]
+elif which screen >/dev/null 2>&1 && [[ -z $TMUX ]] && [[ $SCREEN_STATUS -le 9 ]]
 then
-  if [[ $SCREEN_STATUS -le 9 ]] # no screens are running
-  then
-    screen -d -m -S main
-    screen -S main -p 1 -X stuff "clear$(printf \\r)"
-    screen -rd
-  fi
+  unset SCREEN_STATUS
+  screen -d -m -S main
+  screen -S main -p 1 -X stuff "clear$(printf \\r)"
+  screen -rd
 fi
 
