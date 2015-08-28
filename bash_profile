@@ -18,15 +18,21 @@ export VISUAL="vim"
 # start tmux/screen or attach to an existing session
 # only runs if we're not in an active tmux/screen session right now
 
-if which tmux >/dev/null 2>&1 && [[ -z $TMUX ]]
+if which tmux >/dev/null 2>&1
 then
-  unset SCREEN_STATUS
-  tmux attach >/dev/null 2>&1 || tmux new-session -s main
-elif which screen >/dev/null 2>&1 && [[ $(screen -q -ls; echo $?) -le 9 ]]
+  if [[ -z $TMUX ]]
+  then
+    unset SCREEN_STATUS
+    tmux attach >/dev/null 2>&1 || tmux new-session -s main
+  fi
+elif which screen >/dev/null 2>&1
 then
-  unset SCREEN_STATUS
-  screen -d -m -S main
-  screen -S main -p 1 -X stuff "clear$(printf \\r)"
-  screen -rd
+  if [[ $(screen -q -ls; echo $?) -le 9 ]]
+  then
+    unset SCREEN_STATUS
+    screen -d -m -S main
+    screen -S main -p 1 -X stuff "clear$(printf \\r)"
+    screen -rd
+  fi
 fi
 
