@@ -56,7 +56,7 @@ function search() {
 }
 
 function find_and_replace() {
-  if [[ -z $DIR ]];
+  if [[ -z "$DIR" ]];
   then
     DIR=$(pwd)
   fi
