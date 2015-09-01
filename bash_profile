@@ -22,14 +22,12 @@ if which tmux >/dev/null 2>&1
 then
   if [[ -z $TMUX ]]
   then
-    unset SCREEN_STATUS
     tmux attach >/dev/null 2>&1 || tmux new-session -s main
   fi
 elif which screen >/dev/null 2>&1
 then
   if [[ $(screen -q -ls; echo $?) -le 9 ]]
   then
-    unset SCREEN_STATUS
     screen -d -m -S main
     screen -S main -p 1 -X stuff "clear$(printf \\r)"
     screen -rd
