@@ -22,7 +22,10 @@ if which tmux >/dev/null 2>&1
 then
   if [[ -z $TMUX ]]
   then
-    tmux attach >/dev/null 2>&1 || tmux new-session -s main
+    # -d flag helps resize window
+    # will automatically detach other clients (ie terminal windows)
+    # from the session
+    tmux attach -d >/dev/null 2>&1 || tmux new-session -s main
   fi
 elif which screen >/dev/null 2>&1
 then
