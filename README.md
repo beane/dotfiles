@@ -37,6 +37,7 @@ Extra:
   - OpenEmu
   - iTerm2
   - Ansible
+  - [Keybase][keybase-link]
 
 [solarized-link]: https://github.com/altercation/solarized
 [sublime-link]: https://gist.github.com/olivierlacan/1195304
@@ -44,3 +45,4 @@ Extra:
 [divvy-link]: http://mizage.com/divvy/
 [rvm-link]: https://rvm.io/
 [homebrew-link]: http://brew.sh/
+[keybase-link]: https://keybase.io/
