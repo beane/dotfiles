@@ -13,6 +13,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+autocmd FileType python setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " keep cursor in the middle of the screen
 " set scrolloff=999
