@@ -6,29 +6,19 @@ Essentials:
   - Chrome - log in for the chrome extensions
   - Lastpass
   - [Divvy][divvy-link]
-  - ~~Cloup App~~
-    - Cloud App started charging :-(
   - Dropbox
-  - ~~[Solarized][solarized-link]. I am now in love with solarized.~~
-    - ~~For [sublime][sublime-solarized-link]~~
-    - Edit: I am no longer in love with Solarized. It messed up sublime and the terminal.
   - these dotfiles
   - [RVM][rvm-link]
   - [Homebrew (includes xcode)][homebrew-link]
   - VirtualBox
   - Vagrant (startup Vagrantfile included here)
-  - ~~Sublime Text~~
-    - ~~[Setup][sublime-link]~~
-    - Edit: vim for life!
   - vim
-  - ~~vim colorize (included in the dotfiles)~~
   - tmux
 
-On Chrome:
+Chrome Extensions:
   - Lastpass
-  - ~~Ghostery~~
-    - Edit: It turns out Ghostery is owned by an ad company. I now use Disconnect instead.
-  - AdBlock Plus
+  - Disconnect
+  - uBlock Origin
   - Evernote Clipper
 
 Extra:
@@ -39,9 +29,6 @@ Extra:
   - Ansible
   - [Keybase][keybase-link]
 
-[solarized-link]: https://github.com/altercation/solarized
-[sublime-link]: https://gist.github.com/olivierlacan/1195304
-[sublime-solarized-link]: https://github.com/paulcpederson/solarized-sublime
 [divvy-link]: http://mizage.com/divvy/
 [rvm-link]: https://rvm.io/
 [homebrew-link]: http://brew.sh/
