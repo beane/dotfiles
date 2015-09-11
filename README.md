@@ -1,4 +1,4 @@
-There are my dotfiles. You are free to borrow from them as you like, since that's more or less what I've done. Remember to change your username, email, and root directory name in gitconfig and wherever else. Run the setup.sh script to - you guessed it - set up!
+There are my dotfiles. You are free to borrow from them as you like, since that's more or less what I've done. Remember to change your username, email, and root directory name in gitconfig and wherever else. Run the setup.bash script to - you guessed it - set up!
 
 Here's a few lists of stuff I like to have on my machines.
 
