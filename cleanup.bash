@@ -39,7 +39,7 @@ echo "...done"
 
 if [[ -d "$OLDDOTFILES" ]]; then
   echo "Replacing dotfiles with those stored in $OLDDOTFILES"
-  find "$OLDDOTFILES" -exec print_tab && echo "Moving {} back to $HOME" \; -exec  mv {} ~ \;
+  find "$OLDDOTFILES" -exec printf "\tCopying {} back to $HOME\n" \; -exec cp {} ~ \;
   echo "...done"
 fi
 
