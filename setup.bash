@@ -55,7 +55,7 @@ for DIR in $DIRECTORIES; do
     print_tab && echo "Backing up ~/.$BASE"
     print_tab && mv ~/$DIR $OLDDOTFILES/ || print_tab && echo "~/$DIR does not exist."
     print_tab && echo "Creating a symbolic link from $DOTFILES/$DIR to home directory."
-    print_tab && ln -v -h -s $DOTFILES/$DIR ~/$DIR
+    print_tab && ln -v -n -s $DOTFILES/$DIR ~/$DIR
     echo ""
 done
 echo "...done"
