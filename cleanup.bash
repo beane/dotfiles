@@ -18,9 +18,9 @@ DIRECTORIES="vagrant"
 ########## Showtime
 echo "Removing all provided symlinks"
 for FILE in $FILES; do
+    BASE=$(basename $FILE)
     # ~/.$BASE exists & is a symlink
     if [[ -L ~/.$BASE ]]; then
-      BASE=$(basename $FILE)
       print_tab && echo "Removing ~/.$BASE"
       print_tab && rm -f ~/.$BASE
       echo ""
