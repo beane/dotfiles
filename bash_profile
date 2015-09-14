@@ -10,6 +10,13 @@ export HISTCONTROL=ignorespace
 export EDITOR="vim"
 export VISUAL="vim"
 
+function debug() {
+  debug_time="$(date)"
+  echo "$debug_time $1"
+}
+
+alias wtf="debug"
+
 # tmux/screen code needs to be loaded after
 # everything else. it looks like starting
 # one of the sessions interrupts normal
@@ -34,6 +41,9 @@ then
     screen -d -m -S main
     screen -S main -p 1 -X stuff "clear$(printf \\r)"
     screen -rd
+  elif [[ $(screen -q -ls; echo $?) -ge 10 ]]
+  then
+    screen -r -q
   fi
 fi
 
