@@ -10,13 +10,6 @@ export HISTCONTROL=ignorespace
 export EDITOR="vim"
 export VISUAL="vim"
 
-function debug() {
-  debug_time="$(date)"
-  echo "$debug_time $1"
-}
-
-alias wtf="debug"
-
 # tmux/screen code needs to be loaded after
 # everything else. it looks like starting
 # one of the sessions interrupts normal

@@ -16,6 +16,14 @@ alias gzip="gzip --keep"
 #         FUNCTIONS         #
 #############################
 
+# echo with timestamps
+function debug() {
+  debug_time="$(date)"
+  echo "$debug_time $1"
+}
+
+alias wtf="debug"
+
 # git functions thanks to my boss, Jay
 # get branch fresh from remote
 function gget() {
