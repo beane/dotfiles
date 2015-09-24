@@ -225,6 +225,26 @@ function drop_first() {
   tail -r | skip_last $1 | tail -r
 }
 
+function today() {
+  while [[ $# > 1 ]]; do
+    case "$1" in
+      -d|--delimiter)
+        delim="$2"
+        shift
+        ;;
+      *)
+        ;;
+    esac
+    shift
+  done
+
+  if [ -z "$delim" ]; then
+    delim=''
+  fi
+
+  echo "$(date +"%Y")$delim$(date +"%m")$delim$(date +"%d")"
+}
+
 function make_date_path() {
   if [[ -z $1 ]]
   then
