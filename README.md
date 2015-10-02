@@ -7,7 +7,6 @@ Essentials:
   - Lastpass
   - [Divvy][divvy-link]
   - Dropbox
-  - these dotfiles
   - [RVM][rvm-link]
   - [Homebrew (includes xcode)][homebrew-link]
   - VirtualBox
@@ -28,8 +27,10 @@ Extra:
   - iTerm2
   - Ansible
   - [Keybase][keybase-link]
+  - [Dash][dash-link]
 
 [divvy-link]: http://mizage.com/divvy/
 [rvm-link]: https://rvm.io/
 [homebrew-link]: http://brew.sh/
 [keybase-link]: https://keybase.io/
+[dash-link]: https://kapeli.com/dash
