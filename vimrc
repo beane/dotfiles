@@ -45,7 +45,7 @@ nnoremap s :update<Enter>
 " toggles line comments
 " boisvertmaxime@gmail.com
 fun! Comment(ft)
-" get cursor position
+  " get cursor position
   let lineNum = line(".")
   let colNum = col(".")
 
@@ -55,7 +55,7 @@ fun! Comment(ft)
     exe "s@^@".c." @ | s@^".c." ".c." @@e"
   endif
 
-" reset cursor
+  " reset cursor
   call cursor(lineNum, colNum)
 endfun
 
@@ -79,14 +79,14 @@ vnoremap <silent> # :call Comment(&ft)<CR>
 " file is larger than 10mb
 let g:LargeFile = 1024 * 1024 * 10
 augroup LargeFile
- autocmd BufReadPre * call HandleLargeFiles()
+  autocmd BufReadPre * call HandleLargeFiles()
 augroup END
 
 function HandleLargeFiles()
- let f=getfsize(expand("<afile>"))
- if f > g:LargeFile || f == -2
-   call PromptOpenLargeFile()
- endif
+  let f=getfsize(expand("<afile>"))
+  if f > g:LargeFile || f == -2
+    call PromptOpenLargeFile()
+  endif
 endfunction
 
 function PromptOpenLargeFile()
