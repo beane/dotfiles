@@ -13,8 +13,9 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-autocmd FileType python setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType haskell setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab " expandtab if needed
+autocmd FileType haskell setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType c setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " keep cursor in the middle of the screen
 " set scrolloff=999
