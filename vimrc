@@ -4,6 +4,8 @@ set nocompatible
 set paste
 set foldmethod=indent
 
+set helpheight=999
+
 " use these to persist folds
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
