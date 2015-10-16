@@ -11,13 +11,12 @@ autocmd BufWinLeave ?* mkview!
 autocmd BufWinEnter ?* silent loadview
 
 syntax on
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab " expandtab if needed
-autocmd FileType haskell setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-autocmd FileType c setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType python setlocal noexpandtab " use expandtab if needed
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " keep cursor in the middle of the screen
 " set scrolloff=999
