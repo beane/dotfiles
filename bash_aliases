@@ -254,5 +254,5 @@ function make_date_path() {
   else
     DIR=$1
   fi
-  mkdir -p "$DIR/$(date +"%Y")/$(date +"%m")/$(date +"%d")/"
+  mkdir -p "$DIR/$(today -d /)/"
 }
