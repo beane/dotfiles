@@ -1,16 +1,20 @@
 filetype plugin indent on
 
+syntax on
+
 set nocompatible
 set paste
 set foldmethod=indent
-
 set helpheight=999
+set ruler
+set hlsearch
+set wrapscan
 
-" use these to persist folds
-autocmd BufWinLeave ?* mkview!
-autocmd BufWinEnter ?* silent! loadview
+" keep cursor in the middle of the screen
+" set scrolloff=999
+" set relativenumber
 
-syntax on
+" tab logic
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -18,14 +22,9 @@ set expandtab
 autocmd FileType python setlocal noexpandtab " use expandtab if needed
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-" keep cursor in the middle of the screen
-" set scrolloff=999
-" set relativenumber
-
-set ruler
-
-set hlsearch
-set wrapscan
+" use these to persist folds
+autocmd BufWinLeave ?* mkview!
+autocmd BufWinEnter ?* silent! loadview
 
 runtime macros/matchit.vim
 
@@ -47,53 +46,55 @@ nnoremap s :update<Enter>
 " toggles line comments
 " boisvertmaxime@gmail.com
 fun! Comment(ft)
-  " get cursor position
-  let lineNum = line(".")
-  let colNum = col(".")
+    " get cursor position
+    let lineNum = line(".")
+    let colNum = col(".")
 
-  let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//'}
-  if has_key(dic, a:ft)
-    let c = dic[a:ft]
-    exe "s@^@".c." @ | s@^".c." ".c." @@e"
-  endif
+    let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//'}
+    " insert comment character
+    if has_key(dic, a:ft)
+        let c = dic[a:ft]
+        exe "s@^@".c." @ | s@^".c." ".c." @@e"
+    endif
 
-  " reset cursor
-  call cursor(lineNum, colNum)
+    " reset cursor
+    call cursor(lineNum, colNum)
 endfun
 
 nnoremap <silent> # :call Comment(&ft)<CR>
 vnoremap <silent> # :call Comment(&ft)<CR>
 
+" file is larger than 10mb
+let g:LargeFile = 1024 * 1024 * 10
+augroup LargeFile
+    autocmd BufReadPre * call HandleLargeFiles()
+augroup END
+
+function HandleLargeFiles()
+    let f=getfsize(expand("<afile>"))
+    if f > g:LargeFile || f == -2
+        call PromptOpenLargeFile()
+    endif
+endfunction
+
+function PromptOpenLargeFile()
+    let choice = confirm("The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB - Do you want to open it?", "&Yes\n&No", 2)
+    if choice == 0 || choice == 2
+        :q
+    endif
+endfunction
+
 " kill spaces/tabs at the end of every line
 " fun! KillWhitespace()
-"   let lineNum = line(".")
-"   let colNum = col(".")
-"   %s/\s*$//g
-"   call cursor(lineNum, colNum)
+"     let lineNum = line(".")
+"     let colNum = col(".")
+"     %s/\s*$//g
+"     call cursor(lineNum, colNum)
 " endfun
 
 " autocmd BufWritePre * call KillWhitespace()
 
 " fun! ICanHazTabs()
-"   vimgrep '\t' %:p
+"     vimgrep '\t' %:p
 " endfun
 
-" file is larger than 10mb
-let g:LargeFile = 1024 * 1024 * 10
-augroup LargeFile
-  autocmd BufReadPre * call HandleLargeFiles()
-augroup END
-
-function HandleLargeFiles()
-  let f=getfsize(expand("<afile>"))
-  if f > g:LargeFile || f == -2
-    call PromptOpenLargeFile()
-  endif
-endfunction
-
-function PromptOpenLargeFile()
-  let choice = confirm("The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB - Do you want to open it?", "&Yes\n&No", 2)
-  if choice == 0 || choice == 2
-    :q
-  endif
-endfunction
