@@ -20,23 +20,23 @@ export VISUAL="vim"
 
 if which tmux >/dev/null 2>&1
 then
-  if [[ -z $TMUX ]]
-  then
-    # -d flag helps resize window
-    # will automatically detach other clients (ie terminal windows)
-    # from the session
-    tmux attach -d >/dev/null || tmux new-session -s main
-  fi
+    if [[ -z $TMUX ]]
+    then
+        # -d flag helps resize window
+        # will automatically detach other clients (ie terminal windows)
+        # from the session
+        tmux attach -d >/dev/null || tmux new-session -s main
+    fi
 elif which screen >/dev/null 2>&1
 then
-  if [[ $(screen -q -ls; echo $?) -le 9 ]]
-  then
-    screen -d -m -S main
-    screen -S main -p 1 -X stuff "clear$(printf \\r)"
-    screen -rd
-  elif [[ $(screen -q -ls; echo $?) -ge 10 ]]
-  then
-    screen -r -q
-  fi
+    if [[ $(screen -q -ls; echo $?) -le 9 ]]
+    then
+        screen -d -m -S main
+        screen -S main -p 1 -X stuff "clear$(printf \\r)"
+        screen -rd
+    elif [[ $(screen -q -ls; echo $?) -ge 10 ]]
+    then
+        screen -r -q
+    fi
 fi
 
