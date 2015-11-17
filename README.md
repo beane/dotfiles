@@ -6,6 +6,8 @@ Essentials:
   - Chrome - log in for the chrome extensions
   - Lastpass
   - [Divvy][divvy-link]
+  - [BetterTouchTools][btt-link]: a free Divvy alternative
+    - shortcuts saved in [btt/](./btt)
   - Dropbox
   - [RVM][rvm-link]
   - [Homebrew (includes xcode)][homebrew-link]
@@ -34,3 +36,4 @@ Extra:
 [homebrew-link]: http://brew.sh/
 [keybase-link]: https://keybase.io/
 [dash-link]: https://kapeli.com/dash
+[btt-link]: http://www.boastr.net/
