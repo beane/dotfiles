@@ -4,7 +4,6 @@ Here's a few lists of stuff I like to have on my machines.
 
 Essentials:
   - Chrome - log in for the chrome extensions
-  - Lastpass
   - [Divvy][divvy-link]
   - [BetterTouchTools][btt-link]: a free Divvy alternative
     - shortcuts saved in [btt/](./btt)
@@ -17,10 +16,12 @@ Essentials:
   - tmux
 
 Chrome Extensions:
-  - Lastpass
+  - ~~Lastpass~~
+    - Since Lastpass [got bought out][lastpass-bought-out-link], I now use 1Password
   - Disconnect
+  - Privacy Badget
   - uBlock Origin
-  - Evernote Clipper
+  - Evernote Web Clipper
 
 Extra:
   - Spotify
@@ -39,3 +40,4 @@ Extra:
 [btt-link]: http://www.boastr.net/
 [rbenv-link]: https://github.com/sstephenson/rbenv#installation
 [ruby-build-link]: https://github.com/sstephenson/ruby-build#installation
+[lastpass-bought-out-link]: https://blog.lastpass.com/2015/10/lastpass-joins-logmein.html/
