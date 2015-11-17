@@ -257,3 +257,20 @@ function make_date_path() {
     fi
     mkdir -p "$DIR/$(today -d /)/"
 }
+
+function add() {
+    args="$@"
+    # handle piped arguments
+    if [[ -z "$args" ]]
+    then
+        read args
+    fi
+
+    sum=0
+    for num in $args
+    do
+        sum=$(( $sum + $num ))
+    done
+    echo $sum
+}
+
