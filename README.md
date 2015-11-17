@@ -9,7 +9,7 @@ Essentials:
   - [BetterTouchTools][btt-link]: a free Divvy alternative
     - shortcuts saved in [btt/](./btt)
   - Dropbox
-  - [RVM][rvm-link]
+  - [RVM][rvm-link] or [rbenv][rbenv-link] with [ruby-build][ruby-build-link]
   - [Homebrew (includes xcode)][homebrew-link]
   - VirtualBox
   - Vagrant (startup Vagrantfile included here)
@@ -37,3 +37,5 @@ Extra:
 [keybase-link]: https://keybase.io/
 [dash-link]: https://kapeli.com/dash
 [btt-link]: http://www.boastr.net/
+[rbenv-link]: https://github.com/sstephenson/rbenv#installation
+[ruby-build-link]: https://github.com/sstephenson/ruby-build#installation
