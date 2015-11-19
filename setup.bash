@@ -75,6 +75,6 @@ echo "...done"
 
 echo "
 Dotfiles are all installed!
-You may to log out and log back in for them to take effect.
+You may want to log out and log back in for them to take effect.
 (Or  source ~/.bash_profile.) Enjoy!
 "
