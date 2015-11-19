@@ -4,23 +4,28 @@
 # thanks to http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 ############################
 
-########## helper functions
-
-function print_tab() { printf "\t"; }
-
-########## git prep
-
-git submodule init
-git submodule update
-
-########## Variables
+########## variables
 
 DOTFILES=~/dotfiles                    # dotfiles directory
 OLDDOTFILES=~/old_dotfiles             # old dotfiles backup directory
 FILES="bashrc profile bash_profile bash_profile.local vimrc gitconfig gitignore_global bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb tmux.conf screenrc" # list of files to copy
 DIRECTORIES="vagrant"
 
-########## Showtime
+########## helper functions
+
+function print_tab() { printf "\t"; }
+
+########## git prep
+
+cd $DOTFILES
+
+git submodule init
+git submodule update --recursive
+git submodule foreach git fetch origin master
+git submodule foreach git checkout master
+git submodule foreach git pull origin master
+
+########## showtime
 
 # create dotfiles_old in homedir
 echo "Creating $OLDDOTFILES for backup of any existing dotfiles in ~"
