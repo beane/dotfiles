@@ -8,6 +8,7 @@
   kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
   pushc = !sh -c 'git push origin `git cbr`'
   diffc = diff --cached
+  graphdiff = log --oneline --graph --decorate --left-right --boundary --date-order
 [user]
   name = Brian Deane
   email = bdeanemachine@gmail.com
