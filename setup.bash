@@ -18,6 +18,7 @@ function print_tab() { printf "\t"; }
 
 ########## git prep
 
+# if the directory is already there, should git fetch/pull master
 git clone $REMOTE_URL $DOTFILES
 
 cd $DOTFILES
