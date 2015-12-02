@@ -1,34 +1,37 @@
 [alias]
-  co = checkout
-  cm = commit -m
-  st = status
-  br = branch
-  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-  cbr = rev-parse --abbrev-ref HEAD
-  kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
-  pushc = !sh -c 'git push origin `git cbr`'
-  diffc = diff --cached
-  graphdiff = log --oneline --graph --decorate --left-right --boundary --date-order
+	co = checkout
+	cm = commit -m
+	st = status
+	br = branch
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	cbr = rev-parse --abbrev-ref HEAD
+	kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
+	pushc = !sh -c 'git push origin `git cbr`'
+	diffc = diff --cached
+	graphdiff = log --oneline --graph --decorate --left-right --boundary --date-order # arg must be ref1,.ref2
+[alias "file"]
+	whenadded = log --diff-filter=A # arg is path to file
+	hist = log -p # arg is path to file
 [user]
-  name = Brian Deane
-  email = bdeanemachine@gmail.com
+	name = Brian Deane
+	email = bdeanemachine@gmail.com
 [color]
-  diff = true
-  log = true
-  ui = auto
+	diff = true
+	log = true
+	ui = auto
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 [core]
-  editor = vim
-  excludesfile = '~/.gitignore_global'
+	editor = vim
+	excludesfile = '~/.gitignore_global'
