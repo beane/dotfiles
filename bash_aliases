@@ -14,6 +14,7 @@ alias du='du -c'
 alias info='info --vi-keys'
 alias gzip="gzip --keep"
 alias gunzip="gunzip --keep"
+alias jcurl='curl -H "Content-Type: application/json"'
 
 #############################
 #         FUNCTIONS         #
