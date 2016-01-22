@@ -39,6 +39,9 @@ noremap gk k
 vnoremap ;; <Esc>
 nnoremap ! :!
 
+" stops annoying time delay
+set timeoutlen=1000 ttimeoutlen=0
+
 " quick save
 nnoremap s :update<Enter>
 
