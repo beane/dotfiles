@@ -2,8 +2,9 @@ filetype plugin indent on
 
 syntax on
 
+" paste allow the ctrl char to be used in mappings while in insert mode
+" set paste
 set nocompatible
-set paste
 set foldmethod=indent
 set helpheight=999
 set ruler
@@ -44,7 +45,9 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " quick save
 nnoremap s :update<Enter>
-
+" doesn't work when paste is enabled
+inoremap <C-S> <C-O>:update<Enter>
+"
 " simple_comment.vim v0.1
 " toggles line comments
 " boisvertmaxime@gmail.com
