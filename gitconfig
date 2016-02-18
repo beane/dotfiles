@@ -5,10 +5,11 @@
 	br = branch
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	cbr = rev-parse --abbrev-ref HEAD
-	kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
 	pushc = !sh -c 'git push origin `git cbr`'
 	diffc = diff --cached
-	graphdiff = log --oneline --graph --decorate --left-right --boundary --date-order # arg must be ref1,.ref2
+	graphdiff = log --oneline --graph --decorate --left-right --boundary --date-order # arg must be ref1..ref2
+[alias "br"]
+	kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
 [alias "file"]
 	whenadded = log --diff-filter=A # arg is path to file
 	hist = log -p # arg is path to file

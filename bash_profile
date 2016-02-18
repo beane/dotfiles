@@ -6,6 +6,7 @@
 export HISTTIMEFORMAT="%F %T "
 export HISTSIZE=10000
 export HISTCONTROL=ignorespace
+export PS1='\u:\W λ '
 
 # saves history while in tmux
 export PROMPT_COMMAND='history -a'

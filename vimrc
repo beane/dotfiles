@@ -10,6 +10,7 @@ set helpheight=999
 set ruler
 set hlsearch
 set wrapscan
+set mouse=h " for neovim
 
 " keep cursor in the middle of the screen
 " set scrolloff=999
@@ -43,6 +44,15 @@ nnoremap ! :!
 " stops annoying time delay
 set timeoutlen=1000 ttimeoutlen=0
 
+" Ctrl j/k to navigate horizontal splits
+" map <C-J> <C-W>j<C-W>_
+" map <C-K> <C-W>k<C-W>_
+" set wmh=0
+" Ctrl h/l to navigate vertical splits
+" map <C-H> <C-W>h<C-W><bar>
+" map <C-L> <C-W>l<C-W><bar>
+" set wmw=0
+
 " quick save
 nnoremap s :update<Enter>
 " doesn't work when paste is enabled
@@ -56,7 +66,7 @@ fun! Comment(ft)
     let lineNum = line(".")
     let colNum = col(".")
 
-    let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//'}
+    let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//','sql':'#'}
     " insert comment character
     if has_key(dic, a:ft)
         let c = dic[a:ft]
@@ -104,3 +114,45 @@ endfunction
 "     vimgrep '\t' %:p
 " endfun
 
+" from http://vim.wikia.com/wiki/Show_tab_number_in_your_tab_line
+if exists("+showtabline")
+  function MyTabLine()
+    let s = ''
+    let t = tabpagenr()
+    let i = 1
+    while i <= tabpagenr('$')
+      let buflist = tabpagebuflist(i)
+      let winnr = tabpagewinnr(i)
+      let s .= '%' . i . 'T'
+      let s .= (i == t ? '%1*' : '%2*')
+      let s .= '['
+      let s .= i . ']'
+      let s .= '%*'
+      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+      let bufnr = buflist[winnr - 1]
+      let file = bufname(bufnr)
+      let buftype = getbufvar(bufnr, 'buftype')
+      if buftype == 'nofile'
+        if file =~ '\/.'
+          let file = substitute(file, '.*\/\ze.', '', '')
+        endif
+      else
+        let file = fnamemodify(file, ':p:t')
+      endif
+      if file == ''
+        let file = '[No Name]'
+      endif
+      let s .= file
+      let i = i + 1
+    endwhile
+    let s .= '%T%#TabLineFill#%='
+    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+    return s
+  endfunction
+  set stal=1
+  set tabline=%!MyTabLine()
+  map    <C-Tab>    :tabnext<CR>
+  imap   <C-Tab>    <C-O>:tabnext<CR>
+  map    <C-S-Tab>  :tabprev<CR>
+  imap   <C-S-Tab>  <C-O>:tabprev<CR>
+endif
