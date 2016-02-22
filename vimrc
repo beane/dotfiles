@@ -41,6 +41,12 @@ noremap gk k
 vnoremap ;; <Esc>
 nnoremap ! :!
 
+" shortcut to execute file
+nnoremap <C-E> :call Run()<CR>
+fun! Run()
+  :! ./%
+endfun
+
 " stops annoying time delay
 set timeoutlen=1000 ttimeoutlen=0
 
