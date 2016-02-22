@@ -63,7 +63,7 @@ set timeoutlen=1000 ttimeoutlen=0
 nnoremap s :update<Enter>
 " doesn't work when paste is enabled
 inoremap <C-S> <C-O>:update<Enter>
-"
+
 " simple_comment.vim v0.1
 " toggles line comments
 " boisvertmaxime@gmail.com
@@ -152,10 +152,25 @@ function MyTabLine()
   return s
 endfunction
 
+" with help from http://vim.wikia.com/wiki/Show_tab_number_in_your_tab_line
 function MyTabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1])
+  let bufnr = buflist[winnr - 1]
+  let file = bufname(bufnr)
+  let buftype = getbufvar(bufnr, 'buftype')
+
+  if buftype == 'nofile'
+    if file =~ '\/.'
+      let file = substitute(file, '.*\/\ze.', '', '')
+    endif
+  else
+    let file = fnamemodify(file, ':p:t')
+  endif
+  if file == ''
+    let file = '[No Name]'
+  endif
+  return file
 endfunction
 
 set tabline=%!MyTabLine()
