@@ -1,6 +1,8 @@
 filetype plugin indent on
 
-syntax on
+filetype on
+filetype plugin indent on
+syntax enable
 
 " paste allow the ctrl char to be used in mappings while in insert mode
 " set paste
@@ -50,6 +52,7 @@ endfun
 " stops annoying time delay
 set timeoutlen=1000 ttimeoutlen=0
 
+" could be interesting
 " Ctrl j/k to navigate horizontal splits
 " map <C-J> <C-W>j<C-W>_
 " map <C-K> <C-W>k<C-W>_
@@ -72,7 +75,7 @@ fun! Comment(ft)
     let lineNum = line(".")
     let colNum = col(".")
 
-    let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//','sql':'#'}
+    let dic = {'cpp':'//','tex':'%','java':'//','haskell':'--','c':'//', 'ruby':'#','vim':'"','sh':'#','bash':'#','javascript':'//','sql':'#','python':'#'}
     " insert comment character
     if has_key(dic, a:ft)
         let c = dic[a:ft]
@@ -106,20 +109,6 @@ function PromptOpenLargeFile()
     endif
 endfunction
 
-" kill spaces/tabs at the end of every line
-" fun! KillWhitespace()
-"     let lineNum = line(".")
-"     let colNum = col(".")
-"     %s/\s*$//g
-"     call cursor(lineNum, colNum)
-" endfun
-
-" autocmd BufWritePre * call KillWhitespace()
-
-" fun! ICanHazTabs()
-"     vimgrep '\t' %:p
-" endfun
-
 " from :help setting-tabline
 function MyTabLine()
   let s = ''
@@ -143,12 +132,6 @@ function MyTabLine()
 
   " after the last tab fill with TabLineFill and reset tab page nr
   let s .= '%#TabLineFill#%T'
-
-  " right-align the label to close the current tab page
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999Xclose'
-  endif
-
   return s
 endfunction
 
