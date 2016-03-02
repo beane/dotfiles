@@ -9,7 +9,7 @@
 DOTFILES=~/dotfiles                    # dotfiles directory
 OLDDOTFILES=~/old_dotfiles             # old dotfiles backup directory
 FILES="bashrc profile bash_profile bash_profile.local vimrc gitconfig gitignore_global bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb tmux.conf screenrc" # list of files to copy
-DIRECTORIES="vagrant"
+DIRECTORIES="vagrant vim"
 REMOTE_URL="https://github.com/beane/dotfiles"
 
 ########## helper functions
@@ -69,6 +69,12 @@ for DIR in $DIRECTORIES; do
 done
 echo "...done"
 echo ""
+
+# symlink vim stuff to neovim
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+mv $XDG_CONFIG_HOME/nvim ~/$OLDDOTFILES
+ln -v -n -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -v -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
 echo "Sourcing .bash_profile"
 source ~/.bash_profile
