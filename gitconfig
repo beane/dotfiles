@@ -14,8 +14,8 @@
 	whenadded = log --diff-filter=A # arg is path to file
 	hist = log -p # arg is path to file
 [user]
-	name = Brian Deane
-	email = bdeanemachine@gmail.com
+	name = #yolo
+	email = #yolo
 [color]
 	diff = true
 	log = true
