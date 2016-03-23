@@ -12,8 +12,6 @@ alias zgrep='zgrep --color=auto'
 alias tailf='tail -f'
 alias du='du -c'
 alias info='info --vi-keys'
-alias gzip="gzip --keep"
-alias gunzip="gunzip --keep"
 alias jcurl='curl -H "Content-Type: application/json"'
 
 #############################
@@ -267,11 +265,11 @@ function add() {
         read args
     fi
 
-    sum=0
+    dc_script="0 $args"
     for num in $args
     do
-        sum=$(( $sum + $num ))
+        dc_script="$dc_script+"
     done
-    echo $sum
+    dc -e "$dc_script f"
 }
 
