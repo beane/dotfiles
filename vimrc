@@ -1,7 +1,4 @@
 filetype plugin indent on
-
-filetype on
-filetype plugin indent on
 syntax enable
 
 " paste allow the ctrl char to be used in mappings while in insert mode
