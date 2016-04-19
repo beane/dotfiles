@@ -10,7 +10,6 @@ Here's a few lists of stuff I like to have on my machines.
 ### Other Nice Things
 Essentials:
   - Chrome - log in for the chrome extensions
-  - ~~[Divvy][divvy-link]~~
   - [BetterTouchTools][btt-link]: a free Divvy alternative
     - shortcuts saved in [btt/](./btt)
   - Dropbox
@@ -25,7 +24,7 @@ Chrome Extensions:
   - ~~Lastpass~~
     - Since Lastpass [got bought out][lastpass-bought-out-link], I now use 1Password
   - Disconnect
-  - Privacy Badget
+  - Privacy Badger
   - uBlock Origin
   - Evernote Web Clipper
 
