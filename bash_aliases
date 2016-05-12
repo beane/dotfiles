@@ -265,11 +265,11 @@ function add() {
         read args
     fi
 
-    dc_script="0 $args"
+    bc_script="0"
     for num in $args
     do
-        dc_script="$dc_script+"
+        bc_script="$num+$bc_script"
     done
-    dc -e "$dc_script f"
+    echo "$bc_script" | bc
 }
 
