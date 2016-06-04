@@ -14,9 +14,6 @@ export PROMPT_COMMAND='history -a'
 export EDITOR="vim"
 export VISUAL="vim"
 
-bind -r '\C-s'
-stty -ixon
-
 # tmux/screen code needs to be loaded after
 # everything else. it looks like starting
 # one of the sessions interrupts normal
