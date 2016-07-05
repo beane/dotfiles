@@ -4,10 +4,16 @@ syntax enable
 " paste allow the ctrl char to be used in mappings while in insert mode
 " set paste
 set nocompatible
+
+" Install vim plugins
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
+
 set foldmethod=indent
 set helpheight=999
 set ruler
-set hlsearch
+set nohlsearch
 set wrapscan
 set mouse=h " for neovim
 
@@ -20,7 +26,10 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-autocmd FileType python setlocal noexpandtab " use expandtab if needed
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType python setlocal expandtab
+autocmd FileType haskell setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " use these to persist folds
@@ -29,7 +38,7 @@ autocmd BufWinEnter ?* silent! loadview
 
 runtime macros/matchit.vim
 
-" lets you use j/k to naturally navigate wrapped lines
+" lets you use j/k to navigate wrapped lines in a more natural way
 noremap j gj
 noremap k gk
 
@@ -41,8 +50,8 @@ vnoremap ;; <Esc>
 nnoremap ! :!
 
 " shortcut to execute file
-nnoremap <C-E> :call Run()<CR>
-fun! Run()
+nnoremap <C-E> :call Execute()<CR>
+fun! Execute()
   :! ./%
 endfun
 
@@ -83,8 +92,8 @@ fun! Comment(ft)
     call cursor(lineNum, colNum)
 endfun
 
-nnoremap <silent> # :call Comment(&ft)<CR>
-vnoremap <silent> # :call Comment(&ft)<CR>
+nnoremap <silent> <C-c> :call Comment(&ft)<CR>
+vnoremap <silent> <C-c> :call Comment(&ft)<CR>
 
 " file is larger than 10mb
 let g:LargeFile = 1024 * 1024 * 10
