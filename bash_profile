@@ -22,6 +22,8 @@ export VISUAL="vim"
 # start tmux/screen or attach to an existing session
 # only runs if we're not in an active tmux/screen session right now
 
+[[ $TERM_PROGRAM = HyperTerm ]] && return
+
 if which tmux >/dev/null 2>&1
 then
     if [[ -z $TMUX ]]
