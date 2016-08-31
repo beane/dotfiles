@@ -166,3 +166,5 @@ endfunction
 set tabline=%!MyTabLine()
 set showtabline=2
 
+let g:hardtime_default_on = 1
+

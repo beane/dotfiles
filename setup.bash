@@ -8,7 +8,7 @@
 
 DOTFILES=~/dotfiles                    # dotfiles directory
 OLDDOTFILES=~/old_dotfiles             # old dotfiles backup directory
-FILES="bashrc profile bash_profile bash_profile.local vimrc gitconfig gitignore_global bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb tmux.conf screenrc" # list of files to copy
+FILES="bashrc profile bash_profile bash_profile.local vimrc vimrc.bundles gitconfig gitignore_global bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb tmux.conf screenrc" # list of files to copy
 DIRECTORIES="vagrant"
 REMOTE_URL="https://github.com/beane/dotfiles"
 
@@ -72,6 +72,11 @@ echo ""
 
 echo "Sourcing .bash_profile"
 source ~/.bash_profile
+echo "...done"
+
+echo "Creating needed directories"
+echo "\tCreating ~/.vim/plugged/"
+mkdir -p ~/.vim/plugged/
 echo "...done"
 
 echo "
