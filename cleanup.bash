@@ -14,6 +14,7 @@ DOTFILES=~/dotfiles                    # dotfiles directory
 OLDDOTFILES=~/old_dotfiles             # old dotfiles backup directory
 FILES="bashrc profile bash_profile bash_profile.local vimrc vimrc.bundles gitconfig gitignore_global bash_aliases git-completion.bash inputrc json-pretty-print/json_pretty_printer.rb tmux.conf screenrc" # list of files to copy
 DIRECTORIES="vagrant"
+VIM_DIRECTORIES="autoload colors plugged view"
 
 ########## Showtime
 echo "Removing all provided symlinks"
@@ -35,11 +36,20 @@ for DIR in $DIRECTORIES; do
       echo ""
     fi
 done
+
+for DIR in $VIM_DIRECTORIES; do
+    BASE=$(basename $DIR)
+    if [[ -L ~/.vim/$BASE ]]; then
+      print_tab && echo "Removing ~/.vim/$BASE"
+      print_tab && rm -f ~/.vim/$BASE
+      echo ""
+    fi
+done
 echo "...done"
 
 if [[ -d "$OLDDOTFILES" ]]; then
   echo "Replacing dotfiles with those stored in $OLDDOTFILES"
-  find "$OLDDOTFILES/" -exec printf "\tCopying {} back to $HOME\n" \; -exec cp -R {} ~ \;
+  find "$OLDDOTFILES/" -mindepth 1 -maxdepth 1 -exec printf "\tCopying {} back to $HOME\n" \; -exec cp -R {} ~ \;
   echo "...done"
 fi
 

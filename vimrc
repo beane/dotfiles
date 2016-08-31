@@ -1,6 +1,9 @@
 filetype plugin indent on
 syntax enable
 
+colorscheme lucius
+LuciusBlackLowContrast
+
 " paste allow the ctrl char to be used in mappings while in insert mode
 " set paste
 set nocompatible
