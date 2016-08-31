@@ -8,6 +8,8 @@
 	pushc = !sh -c 'git push -u origin `git cbr`'
 	diffc = diff --cached
 	diffs = diff --staged
+	cached = diff --cached
+	staged = diff --staged
 	graphdiff = log --oneline --graph --decorate --left-right --boundary --date-order # arg must be ref1..ref2
 [alias "br"]
 	kill = !sh -c 'git branch | egrep -v master$ | xargs git branch -D' # kill all local branches except master and current
