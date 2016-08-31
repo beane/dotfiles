@@ -50,9 +50,10 @@ vnoremap ;; <Esc>
 nnoremap ! :!
 
 " shortcut to execute file
-nnoremap <C-E> :call Execute()<CR>
+noremap <C-E> :call Execute()<CR>
 fun! Execute()
-  :! ./%
+  :execute 'update'
+  :execute '! ./%'
 endfun
 
 " stops annoying time delay
