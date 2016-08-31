@@ -10,7 +10,7 @@ Here's a few lists of stuff I like to have on my machines.
 ### Other Nice Things
 Essentials:
   - Chrome - log in for the chrome extensions
-  - [BetterTouchTools][btt-link]: a free Divvy alternative
+  - [BetterTouchTools][btt-link]: a ~~free~~ Divvy alternative (no longer free, but still cool)
     - shortcuts saved in [btt/](./btt)
   - Dropbox
   - [RVM][rvm-link] or [rbenv][rbenv-link] with [ruby-build][ruby-build-link]
