@@ -46,11 +46,13 @@ for DIR in $VIM_DIRECTORIES; do
     fi
 done
 echo "...done"
+echo ""
 
 if [[ -d "$OLDDOTFILES" ]]; then
   echo "Replacing dotfiles with those stored in $OLDDOTFILES"
   find "$OLDDOTFILES/" -mindepth 1 -maxdepth 1 -exec printf "\tCopying {} back to $HOME\n" \; -exec cp -R {} ~ \;
   echo "...done"
+  echo ""
 fi
 
 # ~/.bash_profile exists & is executable
@@ -58,6 +60,7 @@ if [[ -x ~/.bash_profile ]]; then
   echo "Sourcing .bash_profile"
   source ~/.bash_profile
   echo "...done"
+  echo ""
 fi
 
 echo "

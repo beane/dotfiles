@@ -75,11 +75,11 @@ echo ""
 echo "Begin backing up old vim directories and setting up vim folders and symlinks..."
 echo ""
 print_tab && echo "Backing up ~/.vim"
-print_tab && mv -v -f ~/.vim $OLDDOTFILES/.vim || print_tab && echo "Problem with backing up ~/.vim"
+print_tab && mv -v -f ~/.vim $OLDDOTFILES/.vim
 for DIR in $VIM_DIRECTORIES; do
     BASE=$(basename $DIR)
     print_tab && echo "Creating ~/.vim/$BASE"
-    print_tab && mkdir -v -p ~/.vim/$BASE || print_tab && echo "Problem with creating ~/.vim/$BASE"
+    print_tab && mkdir -v -p ~/.vim/$BASE
 done
 echo ""
 print_tab && echo "Creating a symlink vim-lucius to ~/.vim/colors"
