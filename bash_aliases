@@ -11,7 +11,6 @@ alias egrep='egrep --color=auto'
 alias zgrep='zgrep --color=auto'
 alias tailf='tail -f'
 alias du='du -c'
-alias info='info --vi-keys'
 alias jcurl='curl -H "Content-Type: application/json"'
 
 #############################
