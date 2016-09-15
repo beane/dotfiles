@@ -14,6 +14,22 @@ export PROMPT_COMMAND='history -a'
 export EDITOR="vim"
 export VISUAL="vim"
 
+# stop here if the shell is not interactive
+# the substitution checks for the string "i"
+# in the magic variable $-, which has the flags
+# with which the shell was invoked
+# ...sorry
+if [ -n "${-##*i*}" ]; then
+    return
+fi
+
+# have ssh-agent start automatically and make sure it dies automatically
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    trap 'ssh-agent -k' EXIT
+    eval $(ssh-agent)
+    ssh-add
+fi
+
 # tmux/screen code needs to be loaded after
 # everything else. it looks like starting
 # one of the sessions interrupts normal
