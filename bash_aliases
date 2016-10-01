@@ -5,13 +5,14 @@
 #############################
 
 alias be="bundle exec"
-alias ls="ls -FG --color=auto" # shows directories in a different color
+alias ls="ls -FG --color=auto" # shows different filetypes in different colors
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias zgrep='zgrep --color=auto'
 alias tailf='tail -f'
 alias du='du -c'
 alias jcurl='curl -H "Content-Type: application/json"'
+alias rvim="vim -R" # opens vim in read-only mode
 
 #############################
 #         FUNCTIONS         #
@@ -19,56 +20,29 @@ alias jcurl='curl -H "Content-Type: application/json"'
 
 # echo with timestamps
 function debug() {
+    local debug_time
     debug_time="$(date)"
     echo "$debug_time $1"
 }
 
 alias wtf="debug"
 
-# git functions thanks to my boss, Jay
-# get branch fresh from remote
-function gget() {
-    git branch -D $1
-    git fetch
-    git checkout --track -b $1 origin/$1
-}
-
-# get merge
-function gmf() {
-    echo "merging "$1" into "$2
-    echo "*****"
-    echo gget $1
-    gget $1
-    echo "*****"
-    echo gget $2
-    gget $2
-    echo "*****"
-    echo git merge --no-ff $1
-    git merge --no-ff $1
-}
-
 # recursively greps through the current directory
 function search() {
+    local search_term search_dir
+    search_term="$1"
     search_dir="$2"
-    if [[ ! $2 ]];
-    then
-        search_dir="$(pwd)"
-    fi
 
-    echo "searching for \"$1\" in $search_dir"
-    if [[ $3 ]]
-    then
-        echo "using extra args \"$3\""
-    fi
+    [[ -z "$search_dir" ]] && search_dir="$(pwd)"
 
-    grep -IHrn "$1" "$search_dir" $3
+    echo "searching for \"$search_term\" in $search_dir"
+    [[ -n $3 ]] && echo "using extra args \"$3\""
+
+    grep -IHrn "$search_term" "$search_dir" $3
 }
 
 function find_and_replace() {
-    if [[ -z "$DIR" ]];
-    then
-        DIR=$(pwd)
-    fi
+    [[ -z "$DIR" ]] && DIR=$(pwd)
     [[ -z "$2" ]] && echo "no replacement string given: searching instead"
 
     echo "looking for \"$1\" in $DIR"
@@ -91,19 +65,20 @@ function vits() {
 # 1) the base filename
 # 2) and 3) are the extensions
 function swapFiles() {
+    local file1 file2
     file1=$1.$2
     file2=$1.$3
 
     if [[ -e $file1 ]] && [[ -e $file2 ]];
     then
         echo "Dangerous to swap since both files exist"
-        return 0
+        exit 1
     fi
 
     if [[ ! -e $1 ]];
     then
         echo "Base file doesn't exist"
-        return 0
+        exit 2
     fi
 
     if [[ -e $file1 ]];
@@ -217,13 +192,10 @@ function sanitize() {
 }
 
 # shows everything except the last `n` lines
+# only needed on OSX for some reason
+# normally head -n -<num> does this
 function skip_last() {
     tail -r | tail -n +$(( $1 + 1 )) | tail -r
-}
-
-# shows everything except the first `n` lines
-function drop_first() {
-    tail -r | skip_last $1 | tail -r
 }
 
 function today() {
