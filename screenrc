@@ -1,3 +1,6 @@
+# helps colors work in vim and probably other places
+term screen-256color
+
 # use C-j instead of C-a
 escape ^jj
 
