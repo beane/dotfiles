@@ -97,7 +97,7 @@ function swapFiles() {
 }
 
 function pp() {
-    cat "$@" | $HOME/.json_pretty_printer.rb
+    cat "$@" | $HOME/.pretty_printer
 }
 
 # escapes space characters in ls command for copy and paste

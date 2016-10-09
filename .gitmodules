@@ -1,9 +1,9 @@
-[submodule "json-pretty-print"]
-	path = json-pretty-print
-	url = https://github.com/beane/json-pretty-print
 [submodule "vim-lucius"]
 	path = vim-lucius
 	url = https://github.com/jonathanfilip/vim-lucius
 [submodule "vim-plug"]
 	path = vim-plug
 	url = https://github.com/junegunn/vim-plug/
+[submodule "json_pretty_printer_shell"]
+	path = json_pretty_printer_shell
+	url = https://github.com/beane/json_pretty_printer_shell
