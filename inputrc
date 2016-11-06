@@ -1,8 +1,10 @@
 # thanks to http://linuxg.net/2-bash-inputrc-tricks-tab-tab-and-case-insensitive-completion/
-set completion-ignore-case on
-set input-meta on
-set output-meta on
-set convert-meta off
+set completion-ignore-case On
+set input-meta On
+set output-meta On
+set convert-meta Off
+set show-all-if-ambiguous On
+set mark-directories On
 
 # ctrl+arrows
 "\e[1;5D": backward-word
