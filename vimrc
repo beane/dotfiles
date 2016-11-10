@@ -102,14 +102,14 @@ augroup LargeFile
     autocmd BufReadPre * call HandleLargeFiles()
 augroup END
 
-function HandleLargeFiles()
+function! HandleLargeFiles()
     let f=getfsize(expand("<afile>"))
     if f > g:LargeFile || f == -2
         call PromptOpenLargeFile()
     endif
 endfunction
 
-function PromptOpenLargeFile()
+function! PromptOpenLargeFile()
     let choice = confirm("The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB - Do you want to open it?", "&Yes\n&No", 2)
     if choice == 0 || choice == 2
         :q
@@ -117,7 +117,7 @@ function PromptOpenLargeFile()
 endfunction
 
 " from :help setting-tabline
-function MyTabLine()
+function! MyTabLine()
   let s = ''
   for i in range(tabpagenr('$'))
     " select the highlighting
@@ -143,7 +143,7 @@ function MyTabLine()
 endfunction
 
 " with help from http://vim.wikia.com/wiki/Show_tab_number_in_your_tab_line
-function MyTabLabel(n)
+function! MyTabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
   let bufnr = buflist[winnr - 1]
