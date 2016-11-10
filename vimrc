@@ -1,10 +1,6 @@
 filetype plugin indent on
 syntax enable
 
-let g:lucius_no_term_bg = 1 " don't let lucis set its gross background
-colorscheme lucius
-LuciusBlackHighContrast
-
 " paste allow the ctrl char to be used in mappings while in insert mode
 " set paste
 set nocompatible
