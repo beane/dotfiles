@@ -244,3 +244,39 @@ function add() {
     echo "$bc_script" | bc
 }
 
+### COLORS
+# give thanks to the blessed http://stackoverflow.com/a/5947802
+echo_with_color() {
+    local color color_code
+
+    color=$(echo "$1" | tr '[:upper:]' '[:lower]')
+
+    # return if color is empty
+    [[ -z "$color" ]] && exit 1
+
+    color_code=""
+    case "$color" in
+        black)          color_code="\033[0;30m" ;;
+        blue)           color_code="\033[0;34m" ;;
+        brown|orange)   color_code="\033[1;33m" ;;
+        cyan)           color_code="\033[0;36m" ;;
+        dgray)          color_code="\033[1;30m" ;;
+        green)          color_code="\033[0;32m" ;;
+        lblue)          color_code="\033[1;34m" ;;
+        lcyan)          color_code="\033[1;36m" ;;
+        lgray)          color_code="\033[0;37m" ;;
+        lgreen)         color_code="\033[1;32m" ;;
+        lpurple)        color_code="\033[1;35m" ;;
+        lred)           color_code="\033[1;31m" ;;
+        purple)         color_code="\033[0;35m" ;;
+        red)            color_code="\033[0;31m" ;;
+        white)          color_code="\033[1;37m" ;;
+        yellow)         color_code="\033[1;33m" ;;
+        *)              exit 2 ;;
+    esac
+
+    shift
+
+    echo "$color_code$@\033[0m"
+}
+

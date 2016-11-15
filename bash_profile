@@ -6,7 +6,7 @@
 export HISTTIMEFORMAT="%F %T "
 export HISTSIZE=10000
 export HISTCONTROL=ignorespace
-export PS1='\u:\W λ '
+export PS1="$(echo_with_color green \\u):$(echo_with_color blue \\W) $(echo_with_color red λ) "
 
 # saves history while in tmux
 export PROMPT_COMMAND='history -a'
