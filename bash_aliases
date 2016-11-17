@@ -13,6 +13,7 @@ alias tailf='tail -f'
 alias du='du -c'
 alias jcurl='curl -H "Content-Type: application/json"'
 alias rvim="vim -R" # opens vim in read-only mode
+alias pp="$HOME/.pretty_printer"
 
 #############################
 #         FUNCTIONS         #
@@ -94,10 +95,6 @@ function swapFiles() {
     else
         echo "These files aren't here"
     fi
-}
-
-function pp() {
-    cat "$@" | $HOME/.pretty_printer
 }
 
 # escapes space characters in ls command for copy and paste
