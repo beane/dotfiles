@@ -256,24 +256,16 @@ color_code() {
 
     color_code=""
     case "$color" in
-        black)          echo -e "\033[0;30m" ;;
-        blue)           echo -e "\033[0;34m" ;;
-        brown|orange)   echo -e "\033[1;33m" ;;
-        cyan)           echo -e "\033[0;36m" ;;
-        dgray)          echo -e "\033[1;30m" ;;
-        green)          echo -e "\033[0;32m" ;;
-        lblue)          echo -e "\033[1;34m" ;;
-        lcyan)          echo -e "\033[1;36m" ;;
-        lgray)          echo -e "\033[0;37m" ;;
-        lgreen)         echo -e "\033[1;32m" ;;
-        lpurple)        echo -e "\033[1;35m" ;;
-        lred)           echo -e "\033[1;31m" ;;
-        purple)         echo -e "\033[0;35m" ;;
-        red)            echo -e "\033[0;31m" ;;
-        white)          echo -e "\033[1;37m" ;;
-        yellow)         echo -e "\033[1;33m" ;;
-        reset)          echo -e "\033[0m" ;;
-        *)              exit 2 ;;
+        black)           echo -e "$(tput setaf 0)" ;;
+        blue)            echo -e "$(tput setaf 4)" ;;
+        cyan)            echo -e "$(tput setaf 6)" ;;
+        green)           echo -e "$(tput setaf 2)" ;;
+        purple|magenta)  echo -e "$(tput setaf 5)" ;;
+        red)             echo -e "$(tput setaf 1)" ;;
+        white)           echo -e "$(tput setaf 7)" ;;
+        yellow)          echo -e "$(tput setaf 3)" ;;
+        reset)           echo -e "$(tput sgr 0)" ;;
+        *)               exit 2 ;;
     esac
 }
 

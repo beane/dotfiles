@@ -6,7 +6,7 @@
 export HISTTIMEFORMAT="%F %T "
 export HISTSIZE=10000
 export HISTCONTROL=ignorespace
-export PS1="\[$(color_code green)\]\u:\[$(color_code blue)\]\W\[$(color_code red)\] λ \[\e[0m\]"
+export PS1="\[$(color_code green)\]\u\[$(color_code reset)\]:\[$(color_code blue)\]\W\[$(color_code red)\] λ \[$(color_code reset)\]"
 
 # saves history while in tmux
 export PROMPT_COMMAND='history -a'
