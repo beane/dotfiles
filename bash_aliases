@@ -244,25 +244,19 @@ function add() {
 ### COLORS
 # give thanks to the blessed http://stackoverflow.com/a/5947802
 color_code() {
-    local color color_code
+    color=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 
-    color=$(echo "$1" | tr '[:upper:]' '[:lower]')
-
-    # return if color is empty
-    [[ -z "$color" ]] && exit 1
-
-    color_code=""
     case "$color" in
-        black)           echo -e "$(tput setaf 0)" ;;
-        blue)            echo -e "$(tput setaf 4)" ;;
-        cyan)            echo -e "$(tput setaf 6)" ;;
-        green)           echo -e "$(tput setaf 2)" ;;
-        purple|magenta)  echo -e "$(tput setaf 5)" ;;
-        red)             echo -e "$(tput setaf 1)" ;;
-        white)           echo -e "$(tput setaf 7)" ;;
-        yellow)          echo -e "$(tput setaf 3)" ;;
-        reset)           echo -e "$(tput sgr 0)" ;;
-        *)               exit 2 ;;
+        black)           echo -ne "$(tput setaf 0)" ;;
+        blue)            echo -ne "$(tput setaf 4)" ;;
+        cyan)            echo -ne "$(tput setaf 6)" ;;
+        green)           echo -ne "$(tput setaf 2)" ;;
+        purple|magenta)  echo -ne "$(tput setaf 5)" ;;
+        red)             echo -ne "$(tput setaf 1)" ;;
+        white)           echo -ne "$(tput setaf 7)" ;;
+        yellow)          echo -ne "$(tput setaf 3)" ;;
+        reset)           echo -ne "$(tput sgr 0)" ;;
+        *)               $(exit 1) ;;
     esac
 }
 
