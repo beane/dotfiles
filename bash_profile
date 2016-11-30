@@ -42,7 +42,7 @@ fi
 
 if which tmux >/dev/null 2>&1
 then
-    if [[ -z $TMUX ]]
+    if [[ -z $TMUX && -z $STY ]]
     then
         # -d flag helps resize window
         # will automatically detach other clients (ie terminal windows)
@@ -51,14 +51,17 @@ then
     fi
 elif which screen >/dev/null 2>&1
 then
-    if [[ $(screen -q -ls; echo $?) -le 9 ]]
+    if [[ -z $TMUX && -z $STY ]]
     then
-        screen -d -m -S main
-        screen -S main -p 1 -X stuff "clear$(printf \\r)"
-        screen -rd
-    elif [[ $(screen -q -ls; echo $?) -ge 10 ]]
-    then
-        screen -r -q
+        if [[ $(screen -q -ls; echo $?) -le 9 ]]
+        then
+            screen -d -m -S main
+            screen -S main -p 1 -X stuff "clear$(printf \\r)"
+            screen -rd
+        elif [[ $(screen -q -ls; echo $?) -ge 10 ]]
+        then
+            screen -d -R
+        fi
     fi
 fi
 
