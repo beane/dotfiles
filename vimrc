@@ -10,6 +10,9 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+set path+=**
+set wildmenu
+
 set foldmethod=indent
 set helpheight=999
 set ruler
@@ -49,6 +52,12 @@ noremap gk k
 vnoremap ;; <Esc>
 nnoremap ! :!
 
+vnoremap 0 ^
+nnoremap 0 ^
+
+vnoremap ^ 0
+nnoremap ^ 0
+
 " shortcut to execute file
 noremap <C-E> :call Execute()<CR>
 fun! Execute()
@@ -71,6 +80,7 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " quick save
 nnoremap s :update<Enter>
+vnoremap s :update<Enter>
 " doesn't work when paste is enabled
 inoremap <C-S> <C-O>:update<Enter>
 
