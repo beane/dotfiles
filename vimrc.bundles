@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'takac/vim-hardtime'
+Plug 'vimwiki/vimwiki'
+" Plug 'takac/vim-hardtime'
 
 call plug#end()

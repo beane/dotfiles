@@ -1,8 +1,5 @@
 filetype plugin indent on
 syntax enable
-
-" paste allow the ctrl char to be used in mappings while in insert mode
-" set paste
 set nocompatible
 
 " Install vim plugins
@@ -10,6 +7,7 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+" fuzzy finder settings
 set path+=**
 set wildmenu
 
@@ -20,6 +18,9 @@ set nohlsearch
 set wrapscan
 set mouse=h " for neovim
 
+" stops annoying time delay
+set timeoutlen=1000 ttimeoutlen=0
+
 " keep cursor in the middle of the screen
 " set scrolloff=999
 " set relativenumber
@@ -29,17 +30,27 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python setlocal expandtab
 autocmd FileType haskell setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-" use these to persist folds
-autocmd BufWinLeave ?* mkview!
-autocmd BufWinEnter ?* silent! loadview
-
 runtime macros/matchit.vim
+
+" use these to persist folds
+" autocmd BufWinLeave ?* mkview!
+" autocmd BufWinEnter ?* silent! loadview
+
+" Tweaks for browsing
+" thanks to https://github.com/mcantor/no_plugins/blob/0a313c353899d3d4e51b754b15027c4452120f79/no_plugins.vim#L120-L133
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+" let g:netrw_list_hide=netrw_gitignore#Hide()
+" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 " lets you use j/k to navigate wrapped lines in a more natural way
 noremap j gj
@@ -48,8 +59,7 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-" easier escape sequences
-vnoremap ;; <Esc>
+" easier escape sequence
 nnoremap ! :!
 
 vnoremap 0 ^
@@ -58,6 +68,23 @@ nnoremap 0 ^
 vnoremap ^ 0
 nnoremap ^ 0
 
+" quick save
+nnoremap s :update<Enter>
+vnoremap s :update<Enter>
+
+nnoremap <C-c> :call Comment(&ft)<CR>
+vnoremap <C-c> :call Comment(&ft)<CR>
+
+" wiki
+noremap <Leader>wj :VimwikiDiaryIndex<Enter>
+noremap <Leader>wn :VimwikiMakeDiaryNote<Enter>
+
+" if file is larger than 10mb
+let g:LargeFile = 1024 * 1024 * 10
+augroup LargeFile
+    autocmd BufReadPre * call HandleLargeFiles()
+augroup END
+
 " shortcut to execute file
 noremap <C-E> :call Execute()<CR>
 fun! Execute()
@@ -65,8 +92,8 @@ fun! Execute()
   :execute '! ./%'
 endfun
 
-" stops annoying time delay
-set timeoutlen=1000 ttimeoutlen=0
+set tabline=%!MyTabLine()
+set showtabline=2
 
 " could be interesting
 " Ctrl j/k to navigate horizontal splits
@@ -78,11 +105,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " map <C-L> <C-W>l<C-W><bar>
 " set wmw=0
 
-" quick save
-nnoremap s :update<Enter>
-vnoremap s :update<Enter>
-" doesn't work when paste is enabled
-inoremap <C-S> <C-O>:update<Enter>
+" Function Definitions
 
 " simple_comment.vim v0.1
 " toggles line comments
@@ -102,15 +125,6 @@ fun! Comment(ft)
     " reset cursor
     call cursor(lineNum, colNum)
 endfun
-
-nnoremap <silent> <C-c> :call Comment(&ft)<CR>
-vnoremap <silent> <C-c> :call Comment(&ft)<CR>
-
-" file is larger than 10mb
-let g:LargeFile = 1024 * 1024 * 10
-augroup LargeFile
-    autocmd BufReadPre * call HandleLargeFiles()
-augroup END
 
 function! HandleLargeFiles()
     let f=getfsize(expand("<afile>"))
@@ -172,9 +186,4 @@ function! MyTabLabel(n)
   endif
   return file
 endfunction
-
-set tabline=%!MyTabLine()
-set showtabline=2
-
-let g:hardtime_default_on = 1
 
