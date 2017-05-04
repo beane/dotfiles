@@ -14,7 +14,14 @@ alias du='du -c'
 alias jcurl='curl -H "Content-Type: application/json"'
 alias rvim="vim -R" # opens vim in read-only mode
 alias pp="$HOME/.pretty_printer"
+
+#############################
+#       GIT ALIASES         #
+#############################
+
 alias g="git"
+alias gd="git diff"
+alias gs="git status"
 
 #############################
 #         FUNCTIONS         #
