@@ -2,9 +2,10 @@
 set completion-ignore-case On
 set input-meta On
 set output-meta On
-set convert-meta Off
+set convert-meta On
 set show-all-if-ambiguous On
 set mark-directories On
+set expand-tilde On
 
 # ctrl+arrows
 "\e[1;5D": backward-word
@@ -13,11 +14,4 @@ set mark-directories On
 # alt+arrows
 "\e[1;9D": backward-word
 "\e[1;9C": forward-word
-
-# alt+b
-"\xe2\x88\xab":"\eb"
-# alt+d
-"\xe2\x88\x82":"\ed"
-# alt+f
-"\xc6\x92":"\ef"
 
