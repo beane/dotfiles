@@ -39,9 +39,9 @@ autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 runtime macros/matchit.vim
 
-" use these to persist folds
-" autocmd BufWinLeave ?* mkview!
-" autocmd BufWinEnter ?* silent! loadview
+" use these to auto-open folds
+autocmd BufEnter ?* silent! %foldopen!
+autocmd BufEnter ?* silent! %foldopen!
 
 " Tweaks for browsing
 " thanks to https://github.com/mcantor/no_plugins/blob/0a313c353899d3d4e51b754b15027c4452120f79/no_plugins.vim#L120-L133
