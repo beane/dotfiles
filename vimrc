@@ -69,11 +69,11 @@ vnoremap ^ 0
 nnoremap ^ 0
 
 " quick save
-nnoremap s :update<Enter>
-vnoremap s :update<Enter>
+nnoremap <C-s> :update<Enter>
+vnoremap <C-s> :update<Enter>
 
-nnoremap <C-c> :call Comment(&ft)<CR>
-vnoremap <C-c> :call Comment(&ft)<CR>
+nnoremap <Leader>c :call Comment(&ft)<CR>
+vnoremap <Leader>c :call Comment(&ft)<CR>
 
 " wiki
 noremap <Leader>wj :VimwikiDiaryIndex<Enter>
@@ -86,7 +86,7 @@ augroup LargeFile
 augroup END
 
 " shortcut to execute file
-noremap <C-E> :call Execute()<CR>
+noremap <Leader>e :call Execute()<CR>
 fun! Execute()
   :execute 'update'
   :execute '! ./%'
