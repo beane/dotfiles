@@ -40,3 +40,5 @@
 [core]
 	editor = vim
 	excludesfile = '~/.gitignore_global'
+[grep]
+  lineNumber = true
