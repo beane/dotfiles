@@ -1,7 +1,7 @@
 ### Installation
-You can clone the repo yourself and run the `./setup.bash` script. If you don't want to do anything, you just need to pipe the setup script to bash:
+You can clone the repo yourself and use `setup.sh`. The install script uses `stow` to manage symlnks.
 ```
-curl https://raw.githubusercontent.com/beane/dotfiles/master/setup.bash | bash
+cd dotfiles/home/ && stow -t "$HOME" *
 ```
 ### About
 There are my dotfiles. You are free to borrow from them as you like, since that's more or less what I've done. Remember to change your username, email, and root directory name in gitconfig and wherever else.

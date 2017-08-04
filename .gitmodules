@@ -1,9 +1,6 @@
-[submodule "vim-lucius"]
-	path = vim-lucius
-	url = https://github.com/jonathanfilip/vim-lucius
-[submodule "vim-plug"]
-	path = vim-plug
-	url = https://github.com/junegunn/vim-plug/
-[submodule "json_pretty_printer_shell"]
-	path = json_pretty_printer_shell
-	url = https://github.com/beane/json_pretty_printer_shell
+[submodule "home/jpp/.json_pretty_printer"]
+	path = home/jpp/.json_pretty_printer
+	url = https://github.com/beane/json_pretty_printer_shell.git
+[submodule "home/vim/.vim/vim-plug"]
+	path = home/vim/.vim/vim-plug
+	url = https://github.com/junegunn/vim-plug
