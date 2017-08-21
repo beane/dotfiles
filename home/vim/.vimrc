@@ -68,6 +68,20 @@ nnoremap 0 ^
 vnoremap ^ 0
 nnoremap ^ 0
 
+" better search
+nnoremap / q/i
+nnoremap q/ /
+
+vnoremap / q/i
+vnoremap q/ /
+
+" better search
+nnoremap : q:i
+nnoremap q: :
+
+vnoremap : q:i
+vnoremap q: :
+
 " quick save
 nnoremap <C-s> :update<Enter>
 vnoremap <C-s> :update<Enter>
