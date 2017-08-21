@@ -26,9 +26,9 @@ set timeoutlen=1000 ttimeoutlen=0
 " set relativenumber
 
 " tab logic
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -36,6 +36,8 @@ autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expand
 autocmd FileType python setlocal expandtab
 autocmd FileType haskell setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 runtime macros/matchit.vim
 
