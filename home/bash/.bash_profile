@@ -6,7 +6,6 @@
 export HISTTIMEFORMAT="%F %T "
 export HISTSIZE=10000
 export HISTCONTROL=ignorespace
-export PS1="\[$(color_code green)\]\u\[$(color_code reset)\]:\[$(color_code blue)\]\W\[$(color_code red)\] λ \[$(color_code reset)\]"
 
 # saves history while in tmux
 export PROMPT_COMMAND='history -a'
@@ -22,6 +21,8 @@ export VISUAL="vim"
 if [ -n "${-##*i*}" ]; then
     return
 fi
+
+export PS1="\[$(color_code green)\]\u\[$(color_code reset)\]:\[$(color_code blue)\]\W\[$(color_code red)\] λ \[$(color_code reset)\]"
 
 # have ssh-agent start automatically and make sure it dies automatically
 if [ -z "$SSH_AUTH_SOCK" ]; then
